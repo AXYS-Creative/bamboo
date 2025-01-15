@@ -1,11 +1,12 @@
 :root {
-  --background-color: #0a0a0a;
-  --font-color--primary: #fefefe;
-  --font-color--secondary: #c0c0c0;
-  --font-family--heading: Satoshi, source-sans-pro, sans-serif;
+  --font-family--heading: Avenir, Montserrat, Corbel, URW Gothic, source-sans-pro, sans-serif;
   --font-family--body: Avenir, Montserrat, Corbel, source-sans-pro, sans-serif;
-  --link-color: #c0c0c0;
-  --link-color-hover: #fefefe;
+  --background-color: #f5f5f5;
+  --font-color--primary: #201b1b;
+  --font-color--secondary: #e4d0d0;
+  --hero-color--primary: #739267;
+  --link-color: #e4d0d0;
+  --link-color-hover: #f5f5f5;
   --content-width: 1920px;
   --body-padding: 64px;
   --radius: 48px;
@@ -77,9 +78,6 @@ body:has(.load-complete) .hero div {
   left: var(--body-padding);
   top: 56px;
   display: flex;
-  align-items: center;
-  gap: 12px;
-  mix-blend-mode: difference;
 }
 @media screen and (min-width: 1921px) {
   .site-header .header-logo {
@@ -89,15 +87,6 @@ body:has(.load-complete) .hero div {
 @media screen and (max-width: 768px) {
   .site-header .header-logo {
     top: 38px;
-  }
-}
-.site-header .header-logo__icon {
-  width: 40px;
-  transition: 0.2s ease;
-}
-@media screen and (max-width: 1512px) {
-  .site-header .header-logo__icon {
-    width: 48px;
   }
 }
 .site-header .header-links {
@@ -262,6 +251,7 @@ body:has(.load-complete) .hero div {
   font-family: var(--font-family--heading);
   font-size: 72px;
   font-weight: 300;
+  line-height: 112%;
   text-transform: uppercase;
   line-height: 100%;
   height: 100%;
@@ -457,6 +447,7 @@ body:has(.load-complete) .hero div {
   font-family: var(--font-family--heading);
   font-size: 24px;
   font-weight: 300;
+  line-height: 112%;
   color: var(--font-color--primary);
 }
 @media screen and (max-width: 1512px) {
@@ -494,6 +485,8 @@ h1,
   font-family: var(--font-family--heading);
   font-size: 96px;
   font-weight: 300;
+  line-height: 112%;
+  letter-spacing: -4px;
 }
 @media screen and (max-width: 1512px) {
   h1,
@@ -508,6 +501,7 @@ h2,
   font-family: var(--font-family--heading);
   font-size: 72px;
   font-weight: 300;
+  line-height: 112%;
 }
 @media screen and (max-width: 1512px) {
   h2,
@@ -522,6 +516,7 @@ h3,
   font-family: var(--font-family--heading);
   font-size: 52px;
   font-weight: 300;
+  line-height: 112%;
 }
 @media screen and (max-width: 1512px) {
   h3,
@@ -536,6 +531,7 @@ h4,
   font-family: var(--font-family--heading);
   font-size: 36px;
   font-weight: 300;
+  line-height: 112%;
 }
 @media screen and (max-width: 1512px) {
   h4,
@@ -550,6 +546,7 @@ h5,
   font-family: var(--font-family--heading);
   font-size: 32px;
   font-weight: 300;
+  line-height: 112%;
 }
 @media screen and (max-width: 1512px) {
   h5,
@@ -564,6 +561,7 @@ h6,
   font-family: var(--font-family--heading);
   font-size: 24px;
   font-weight: 300;
+  line-height: 112%;
 }
 @media screen and (max-width: 1512px) {
   h6,
@@ -630,7 +628,7 @@ span {
 
 small {
   font-family: Avenir, Montserrat, Corbel, source-sans-pro, sans-serif;
-  font-size: 12px;
+  font-size: 14px;
 }
 
 img,
@@ -648,14 +646,44 @@ figure {
 }
 
 .cta-1 {
-  border: 2px solid var(--font-color--primary);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid var(--font-color--primary);
   border-radius: var(--radius);
-  padding: 8px 24px;
+  padding: 8px 16px;
 }
-@media screen and (max-width: 480px) {
-  .cta-1 {
-    padding: 10px 20px;
-  }
+.cta-1__icon {
+  --icon-size: 28px;
+  -webkit-mask-image: url("../img/icons/icon-cta-1.svg");
+          mask-image: url("../img/icons/icon-cta-1.svg");
+  -webkit-mask-size: contain;
+          mask-size: contain;
+  -webkit-mask-repeat: no-repeat;
+          mask-repeat: no-repeat;
+  background-color: var(--hero-color--primary);
+  width: var(--icon-size);
+  height: var(--icon-size);
+  translate: 8px 0;
+}
+
+.cta-2 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+}
+.cta-2__icon {
+  --icon-size: 12px;
+  -webkit-mask-image: url("../img/icons/icon-cta-2.svg");
+          mask-image: url("../img/icons/icon-cta-2.svg");
+  -webkit-mask-size: contain;
+          mask-size: contain;
+  -webkit-mask-repeat: no-repeat;
+          mask-repeat: no-repeat;
+  background-color: var(--hero-color--primary);
+  width: var(--icon-size);
+  height: var(--icon-size);
 }
 
 .cta-group {
@@ -664,6 +692,19 @@ figure {
   align-items: center;
   gap: 24px;
   flex-shrink: 0;
+}
+
+.eyebrow {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  color: var(--hero-color--primary);
+}
+.eyebrow__icon {
+  --icon-size: 16px;
+  width: var(--icon-size);
+  height: var(--icon-size);
 }
 
 .social-media-links {
@@ -828,10 +869,6 @@ figure {
     text-decoration: underline;
   }
 }
-@font-face {
-  font-family: "satoshi";
-  src: url(../fonts/Satoshi-Variable.woff2);
-}
 .main-advanced .grid-flow-img-section {
   display: flex;
   flex-direction: column;
@@ -875,6 +912,8 @@ figure {
   font-family: var(--font-family--heading);
   font-size: 96px;
   font-weight: 300;
+  line-height: 112%;
+  letter-spacing: -4px;
   font-size: 10vw;
   font-weight: 600;
   line-height: 90%;
@@ -890,6 +929,7 @@ figure {
   font-family: var(--font-family--heading);
   font-size: 72px;
   font-weight: 300;
+  line-height: 112%;
   text-transform: uppercase;
   font-weight: 700;
 }
@@ -1001,6 +1041,7 @@ figure {
   font-family: var(--font-family--heading);
   font-size: 36px;
   font-weight: 300;
+  line-height: 112%;
   gap: 24px;
 }
 @media screen and (max-width: 1512px) {
@@ -1106,6 +1147,7 @@ figure {
   font-family: var(--font-family--heading);
   font-size: 72px;
   font-weight: 300;
+  line-height: 112%;
   padding-inline: var(--body-padding);
   padding-block: var(--body-padding);
   overflow: hidden;
@@ -1132,18 +1174,4 @@ figure {
   display: inline-flex;
   text-wrap: nowrap;
   gap: 0.5ch;
-}
-.marquee .marquee-dot {
-  font-size: 36px;
-  color: #c0c0c0;
-  margin: 0 56px;
-  -webkit-user-select: none;
-     -moz-user-select: none;
-          user-select: none;
-}
-@media screen and (max-width: 768px) {
-  .marquee .marquee-dot {
-    font-size: 24px;
-    margin: 0 24px;
-  }
 }/*# sourceMappingURL=styles.css.map */

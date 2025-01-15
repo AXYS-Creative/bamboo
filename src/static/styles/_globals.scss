@@ -73,21 +73,9 @@ body {
     @include left-spacing;
     top: 56px;
     display: flex;
-    align-items: center;
-    gap: 12px;
-    mix-blend-mode: difference;
 
     @include mq-max("md") {
       top: 38px;
-    }
-
-    &__icon {
-      width: 40px;
-      transition: 0.2s ease;
-
-      @include mq-max("xxl") {
-        width: 48px;
-      }
     }
   }
 
@@ -491,7 +479,7 @@ span {
 
 small {
   font-family: $brand-font--body;
-  font-size: 12px;
+  font-size: 14px;
 }
 
 img,
@@ -511,12 +499,33 @@ figure {
 // Components
 
 .cta-1 {
-  border: 2px solid var(--font-color--primary);
+  @include row-center(space-between);
+  border: 1px solid var(--font-color--primary);
   border-radius: var(--radius);
-  padding: 8px 24px;
+  padding: 8px 16px;
 
-  @include mq-max("sm") {
-    padding: 10px 20px;
+  &__icon {
+    --icon-size: 28px;
+
+    @include mask-image("../img/icons/icon-cta-1.svg");
+    background-color: var(--hero-color--primary);
+    width: var(--icon-size);
+    height: var(--icon-size);
+    translate: 8px 0;
+  }
+}
+
+.cta-2 {
+  @include row-center(space-between);
+  gap: 8px;
+
+  &__icon {
+    --icon-size: 12px;
+
+    @include mask-image("../img/icons/icon-cta-2.svg");
+    background-color: var(--hero-color--primary);
+    width: var(--icon-size);
+    height: var(--icon-size);
   }
 }
 
@@ -525,6 +534,23 @@ figure {
   gap: 24px;
   flex-shrink: 0;
 }
+
+.eyebrow {
+  @include row-center;
+  gap: 8px;
+  color: var(--hero-color--primary);
+
+  &__icon {
+    --icon-size: 16px;
+
+    width: var(--icon-size);
+    height: var(--icon-size);
+  }
+}
+
+// .hero {
+
+// }
 
 .social-media-links {
   display: flex;

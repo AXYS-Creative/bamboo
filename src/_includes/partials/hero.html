@@ -1,0 +1,13 @@
+<section class="hero">
+  {% if eyebrow %}
+  <small class="eyebrow">
+    {% if eyebrow_icon %}
+    <img class="eyebrow__icon" src="{{ eyebrow_icon }}" alt="" />
+    {% endif %} Proud RainFocus partners
+  </small>
+  {% endif %}
+  <h1>Premium event solutions</h1>
+  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+
+  {% include "../components/cta-group.html" %}
+</section>

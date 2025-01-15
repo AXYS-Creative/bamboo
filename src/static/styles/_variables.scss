@@ -1,10 +1,14 @@
-$brand-font--heading: "Satoshi", source-sans-pro, sans-serif;
+$brand-font--heading: Avenir, Montserrat, Corbel, "URW Gothic", source-sans-pro,
+  sans-serif;
 $brand-font--body: Avenir, Montserrat, Corbel, source-sans-pro, sans-serif; // If not using a 'Modern font stack' just have one fallback
 
-$black: #0a0a0a;
-$grey-dark: #313131;
-$grey-light: #c0c0c0;
-$white: #fefefe;
+$black: #201b1b;
+$neutral: #e4d0d0;
+$white: #f5f5f5;
+$page: #efe7da;
+$forest: #4d4b3c;
+$sage: #739267;
+$seafoam: #739267;
 
 $content-width: 1920px;
 
@@ -20,18 +24,20 @@ $cubic-ease-sudden-back-strong: cubic-bezier(0.77, -0.43, 0.11, 1.11);
 $cubic-ease-slow-finish: cubic-bezier(0.09, 0.9, 0.5, 1);
 
 // Debugging
-$test: 2px dashed rgba(yellow, 0.75);
+$test: 2px dashed rgba(crimson, 0.75);
 $test-bg: rgba(navy, 0.75);
 
 :root {
-  --background-color: #{$black};
-  --font-color--primary: #{$white};
-  --font-color--secondary: #{$grey-light};
-
   --font-family--heading: #{$brand-font--heading};
   --font-family--body: #{$brand-font--body};
 
-  --link-color: #{$grey-light};
+  --background-color: #{$white};
+  --font-color--primary: #{$black};
+  --font-color--secondary: #{$neutral};
+
+  --hero-color--primary: #{$sage};
+
+  --link-color: #{$neutral};
   --link-color-hover: #{$white};
 
   --content-width: #{$content-width};

@@ -91,37 +91,6 @@ $min-breakpoints: (
 }
 
 //
-// Site Scaffolding
-//
-
-@mixin section-padding($type: "regular") {
-  padding-inline: var(--body-padding);
-  padding-block: var(--body-padding);
-
-  @if $type == "thin" {
-    @include mq-min("lg") {
-      padding-inline: calc(var(--body-padding) * 4);
-    }
-  }
-}
-
-@mixin left-spacing {
-  left: var(--body-padding);
-
-  @include mq-min("xxxl") {
-    left: calc(50% - calc($content-width / 2) + var(--body-padding));
-  }
-}
-
-@mixin right-spacing {
-  right: var(--body-padding);
-
-  @include mq-min("xxxl") {
-    right: calc(50% - calc($content-width / 2 - var(--body-padding)));
-  }
-}
-
-//
 // Typography, check ultra wide & small screens.
 // FYI: Dropping below 12px results in a11y pentalty.
 //
@@ -131,10 +100,12 @@ $min-breakpoints: (
   font-family: var(--font-family--heading);
   font-size: $size;
   font-weight: 300;
+  line-height: 112%;
 }
 
 @mixin h1 {
   @include font-heading(96px);
+  letter-spacing: -4px;
 
   @include mq-max("xxl") {
     font-size: max(61.5px, 6vw);
@@ -198,6 +169,37 @@ $min-breakpoints: (
 }
 
 //
+// Site Scaffolding
+//
+
+@mixin section-padding($type: "regular") {
+  padding-inline: var(--body-padding);
+  padding-block: var(--body-padding);
+
+  @if $type == "thin" {
+    @include mq-min("lg") {
+      padding-inline: calc(var(--body-padding) * 4);
+    }
+  }
+}
+
+@mixin left-spacing {
+  left: var(--body-padding);
+
+  @include mq-min("xxxl") {
+    left: calc(50% - calc($content-width / 2) + var(--body-padding));
+  }
+}
+
+@mixin right-spacing {
+  right: var(--body-padding);
+
+  @include mq-min("xxxl") {
+    right: calc(50% - calc($content-width / 2 - var(--body-padding)));
+  }
+}
+
+//
 // Flex Layout
 //
 
@@ -245,4 +247,12 @@ $min-breakpoints: (
   top: 50%;
   left: 50%;
   translate: -50% -50%;
+}
+
+//
+
+@mixin mask-image($url) {
+  mask-image: url($url);
+  mask-size: contain;
+  mask-repeat: no-repeat;
 }
