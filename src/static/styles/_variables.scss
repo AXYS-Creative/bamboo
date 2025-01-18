@@ -36,12 +36,14 @@ $test-bg: rgba(navy, 0.75);
   --font-color--secondary: #{$neutral};
 
   --hero-color--primary: #{$sage};
+  --hero-color--secondary: #{$forest};
 
   --link-color: #{$neutral};
   --link-color-hover: #{$white};
 
   --content-width: #{$content-width};
   --body-padding: 64px;
+  --body-padding-double: calc(var(--body-padding) * 2);
 
   --radius: 48px;
 

@@ -16,19 +16,28 @@ export const mqMouse = window.matchMedia("(hover: hover) and (pointer: fine)");
   const siteFooter = document.querySelector(".site-footer"),
     scrollToBottom = document.querySelector(".scroll-bottom");
 
+  // Function to set footer height
+  const updateFooterHeight = () => {
+    const footerHeight = siteFooter.getBoundingClientRect().height;
+    document.documentElement.style.setProperty(
+      "--footer-height",
+      `${footerHeight}px`
+    );
+  };
+
+  // Handle scroll to bottom on focus
   scrollToBottom.addEventListener("focus", () => {
     window.scrollTo({
-      top: document.body.scrollHeight - footerHeight,
-      behavior: "smooth", // works with lenis, wow
+      top: document.body.scrollHeight,
+      behavior: "smooth", // doesn't conflict with Lenis
     });
   });
 
-  const footerHeight = siteFooter.getBoundingClientRect().height;
+  // Initial footer height set
+  updateFooterHeight();
 
-  document.documentElement.style.setProperty(
-    "--footer-height",
-    `${footerHeight}px`
-  );
+  // Update footer height on window resize
+  window.addEventListener("resize", updateFooterHeight);
 }
 
 // Detect Safari Browser

@@ -343,29 +343,98 @@ main {
 .site-footer {
   // height established in utility.js for scroll reveal
   @include dark-theme;
-  @include row-center(space-between);
+  @include row-start(space-between);
   flex-wrap: wrap;
-  padding: var(--body-padding);
+  padding: var(--body-padding-double) var(--body-padding) var(--body-padding);
   position: fixed;
   bottom: 0;
+  left: 50%;
+  translate: -50% 0;
   width: 100vw;
   z-index: -1;
 
+  @include mq-max("lg") {
+    --footer-gap: 64px;
+
+    gap: var(--footer-gap);
+  }
+
+  @include mq-max("sm") {
+    --footer-gap: 48px;
+  }
+
   .title-group {
+    @include column-start;
+    gap: 48px;
+
     @include mq-min("lg") {
       width: 50%;
+      padding-inline-end: 48px;
     }
   }
 
   .paragraph-group {
+    @include column-start;
+    gap: 128px;
+    padding-block-start: 12px; // To try and align with large text
+
     @include mq-min("lg") {
       width: 50%;
+    }
+
+    @include mq-max("lg") {
+      gap: var(--footer-gap);
+    }
+
+    .mail-link {
+      font-size: min(3vw, 56px);
+
+      @include mq-max("lg") {
+        @include h4;
+      }
+
+      @include mq-max("sm") {
+        @include h6;
+      }
+
+      &::before {
+        @include mq-min("lg") {
+          height: 2px;
+        }
+        @include mq-min("xxl") {
+          height: 3px;
+        }
+      }
     }
   }
 
   .bottom-group {
+    --top-space: 248px;
+    @include row-center(flex-start);
     width: 100%;
-    margin-block-start: 48px;
+    margin-block-start: var(--top-space);
+
+    @include mq-max("xxl") {
+      --top-space: 128px;
+    }
+
+    @include mq-max("lg") {
+      --top-space: var(--footer-gap);
+    }
+
+    @include mq-max("sm") {
+      flex-direction: column-reverse;
+      align-items: flex-start;
+      gap: var(--footer-gap);
+    }
+
+    .copyright {
+      width: 100%;
+
+      @include mq-min("md") {
+        width: 50%;
+      }
+    }
   }
 }
 
@@ -540,10 +609,6 @@ figure {
 
   @include mq-max("md") {
     gap: 12px;
-  }
-
-  @include mq-max("sm") {
-    gap: 24px;
   }
 
   .social-media-link {
