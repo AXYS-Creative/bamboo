@@ -12,21 +12,24 @@ responsiveGsap.add(
   (context) => {
     let { maxSm, maxMd, maxLg, minMd } = context.conditions;
 
-    // // TEMPLATE TWEEN - SCRUB
-    // gsap.fromTo(
-    //   ".slider__inner",
-    //   { x: "-2%" },
-    //   {
-    //     x: maxSm ? "-32%" : maxLg ? "-32%" : "-32%",
-    //     scrollTrigger: {
-    //       trigger: ".slider",
-    //       start: "top bottom",
-    //       end: maxSm ? "bottom 75%" : "bottom top",
-    //       scrub: 0.8,
-    //       // markers: true,
-    //     },
-    //   }
-    // );
+    // Footer
+    {
+      // Footer Scrub
+      gsap.fromTo(
+        ".site-footer",
+        { y: "50%" },
+        {
+          y: "0%",
+          scrollTrigger: {
+            trigger: ".main-content",
+            start: "bottom bottom",
+            end: "+=750",
+            scrub: true,
+            // markers: true,
+          },
+        }
+      );
+    }
 
     // GLOBAL - Animate any element with the class 'gsap-animate' using the 'animate' companion class
     {

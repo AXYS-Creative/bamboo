@@ -110,6 +110,11 @@ $min-breakpoints: (
   @include mq-max("xxl") {
     font-size: max(61.5px, 6vw);
   }
+
+  @include mq-max("sm") {
+    font-size: 40px;
+    letter-spacing: -2px;
+  }
 }
 @mixin h2 {
   @include font-heading(72px);
@@ -257,6 +262,21 @@ $min-breakpoints: (
 
   background-color: var(--background-color);
   color: var(--font-color--primary);
+}
+
+@mixin ultra-wide($bg-color: $test-bg, $z-index: -1) {
+  &::before {
+    content: "";
+    isolation: isolate;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    translate: -50% 0;
+    width: 100vw;
+    height: 100%;
+    background-color: $bg-color;
+    z-index: $z-index;
+  }
 }
 
 @mixin mask-image($url) {

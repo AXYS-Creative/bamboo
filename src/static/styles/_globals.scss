@@ -3,6 +3,12 @@
   padding: 0;
   box-sizing: border-box;
 
+  &::selection {
+    background: rgba($sage, 0.25);
+    // background-color: var(--font-color--primary);
+    // color: var(--background-color);
+  }
+
   // Autofill for form fields: input, textarea, select, etc. Feel free to delete if there are no forms
   &:-webkit-autofill,
   &:-webkit-autofill:hover,
@@ -61,19 +67,20 @@ body {
   }
 }
 
-main {
-  // For site-footer (behind content)
+.main-content {
+  @include ultra-wide(var(--background-color), 0); // bg-color controlled here
+  position: relative;
   background: var(--background-color);
-  height: 200vh;
-  margin-block-end: var(--footer-height);
+  margin-block-end: var(--footer-height); // For site-footer (behind content)
 }
 
 .site-header {
-  transition: 0.5s ease; // for scroll
+  // No static content here to allow clickthrough
 
   & > * {
-    z-index: 5;
+    z-index: $z-index--header;
     position: fixed;
+    transition: opacity 0.5s ease;
   }
 
   .header-logo {
@@ -114,7 +121,7 @@ main {
       top: 74px;
       translate: 0 -50%;
       transition: opacity 0.3s ease;
-      mix-blend-mode: difference;
+      // mix-blend-mode: difference;
       display: block;
     }
 
@@ -172,14 +179,12 @@ main {
         }
       }
     }
-
-    &.menu-wrapper-page-top {
-      transition: opacity 0.3s ease 0.3s;
-    }
   }
 
   &.away-from-top {
-    opacity: 0;
+    > * {
+      opacity: 0;
+    }
   }
 
   // &.nav-active {
@@ -191,7 +196,6 @@ main {
   position: fixed;
   top: 0;
   width: 100vw;
-  height: 100vh;
   height: 100dvh;
   overflow: auto;
   opacity: 0;
@@ -205,7 +209,6 @@ main {
   .width-constraint {
     position: relative;
     max-width: $content-width;
-    height: 100vh;
     height: 100dvh;
     min-height: 768px;
     margin: auto;
@@ -343,12 +346,13 @@ main {
 .site-footer {
   // height established in utility.js for scroll reveal
   @include dark-theme;
+  @include ultra-wide(var(--background-color)); // bg-color controlled here
   @include row-start(space-between);
   flex-wrap: wrap;
-  padding: var(--body-padding-double) var(--body-padding) var(--body-padding);
   position: fixed;
   bottom: 0;
   left: 50%;
+  padding: var(--body-padding-double) var(--body-padding) var(--body-padding);
   translate: -50% 0;
   width: 100vw;
   z-index: -1;
@@ -461,6 +465,8 @@ main {
 
 section {
   @include section-padding;
+  position: relative; // prevents content from hiding (ultra wide mxixin maybe)
+  background: var(--background-color);
 
   &.hero {
     padding-block: 380px;
@@ -471,6 +477,55 @@ section {
 
     @include mq-max("md") {
       padding-block: 248px;
+    }
+  }
+}
+
+.hero {
+  @include column-start;
+  gap: 24px;
+  height: 100vh;
+
+  @include mq-min("xl") {
+    height: max(100vh, 750px);
+  }
+
+  @include mq-max("lg") {
+    align-items: center;
+  }
+
+  &__text {
+    @include row-end(flex-start);
+
+    @include mq-max("xl") {
+      flex-direction: column;
+      gap: 24px;
+      align-items: flex-start;
+    }
+
+    @include mq-max("lg") {
+      align-items: center;
+    }
+  }
+
+  &__title {
+    text-wrap: balance;
+
+    @include mq-min("lg") {
+      margin-inline-end: 64px;
+    }
+
+    @include mq-max("lg") {
+      text-align: center;
+    }
+  }
+
+  &__small {
+    padding-block-end: 2.5ch;
+    text-wrap: balance;
+
+    @include mq-max("lg") {
+      text-align: center;
     }
   }
 }
@@ -598,10 +653,6 @@ figure {
     height: var(--icon-size);
   }
 }
-
-// .hero {
-
-// }
 
 .social-media-links {
   display: flex;
