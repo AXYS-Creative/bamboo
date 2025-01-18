@@ -127,4 +127,12 @@
   .underline {
     text-decoration: underline;
   }
+
+  .color-primary {
+    color: var(--hero-color--primary);
+  }
+
+  .color-secondary {
+    color: var(--hero-color--secondary);
+  }
 }

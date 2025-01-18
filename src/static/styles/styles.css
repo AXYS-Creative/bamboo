@@ -12,6 +12,7 @@
   --body-padding: 64px;
   --body-padding-double: calc(var(--body-padding) * 2);
   --radius: 48px;
+  --radius-btn: 48px;
 }
 @media (max-width: 1512px) {
   :root {
@@ -565,53 +566,47 @@ section {
   position: relative;
   background: var(--background-color);
 }
-section.hero {
-  padding-block: 380px;
-}
-@media screen and (max-width: 1512px) {
-  section.hero {
-    padding-block: 320px;
-  }
-}
-@media screen and (max-width: 768px) {
-  section.hero {
-    padding-block: 248px;
-  }
-}
 
 .hero {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
-  gap: 24px;
+  padding-block: 248px 0;
   height: 100vh;
 }
-@media screen and (min-width: 1201px) {
+@media screen and (min-width: 1025px) {
   .hero {
-    height: max(100vh, 750px);
+    height: max(80vh, 750px);
+  }
+}
+@media screen and (max-width: 1512px) {
+  .hero {
+    padding-block: 196px 0;
+    height: max(75vh, 500px);
   }
 }
 @media screen and (max-width: 1024px) {
   .hero {
-    align-items: center;
+    padding-block: 148px 0;
   }
 }
 .hero__text {
   display: flex;
   justify-content: flex-start;
   align-items: flex-end;
+  margin-block: 24px 64px;
 }
 @media screen and (max-width: 1200px) {
   .hero__text {
     flex-direction: column;
-    gap: 24px;
     align-items: flex-start;
+    gap: 24px;
   }
 }
 @media screen and (max-width: 1024px) {
   .hero__text {
-    align-items: center;
+    margin-block: 24px;
   }
 }
 .hero__title {
@@ -622,19 +617,9 @@ section.hero {
     margin-inline-end: 64px;
   }
 }
-@media screen and (max-width: 1024px) {
-  .hero__title {
-    text-align: center;
-  }
-}
 .hero__small {
   padding-block-end: 2.5ch;
   text-wrap: balance;
-}
-@media screen and (max-width: 1024px) {
-  .hero__small {
-    text-align: center;
-  }
 }
 
 h1,
@@ -652,11 +637,17 @@ h1,
     font-size: max(61.5px, 6vw);
   }
 }
+@media screen and (max-width: 768px) {
+  h1,
+  .h1 {
+    font-size: 48px;
+    letter-spacing: -2px;
+  }
+}
 @media screen and (max-width: 480px) {
   h1,
   .h1 {
     font-size: 40px;
-    letter-spacing: -2px;
   }
 }
 
@@ -743,7 +734,8 @@ figcaption,
 blockquote,
 input,
 textarea,
-label {
+label,
+li {
   color: var(--font-color--primary);
   font-family: Avenir, Montserrat, Corbel, source-sans-pro, sans-serif;
   font-size: 18px;
@@ -759,7 +751,8 @@ label {
   blockquote,
   input,
   textarea,
-  label {
+  label,
+  li {
     font-size: 16px;
   }
 }
@@ -772,7 +765,8 @@ label {
   blockquote,
   input,
   textarea,
-  label {
+  label,
+  li {
     font-size: 14px;
   }
 }
@@ -802,8 +796,10 @@ video {
   height: auto;
 }
 
-ul {
+ul,
+ol {
   list-style: none;
+  list-style-position: inside;
 }
 
 figure {
@@ -815,7 +811,7 @@ figure {
   justify-content: space-between;
   align-items: center;
   border: 1px solid var(--font-color--primary);
-  border-radius: var(--radius);
+  border-radius: var(--radius-btn);
   padding: 8px 16px;
 }
 .cta-1__icon {
@@ -1028,6 +1024,12 @@ figure {
   .underline {
     text-decoration: underline;
   }
+  .color-primary {
+    color: var(--hero-color--primary);
+  }
+  .color-secondary {
+    color: var(--hero-color--secondary);
+  }
 }
 .main-advanced .grid-flow-img-section {
   display: flex;
@@ -1084,10 +1086,15 @@ figure {
     font-size: max(61.5px, 6vw);
   }
 }
+@media screen and (max-width: 768px) {
+  .main-advanced .light .title {
+    font-size: 48px;
+    letter-spacing: -2px;
+  }
+}
 @media screen and (max-width: 480px) {
   .main-advanced .light .title {
     font-size: 40px;
-    letter-spacing: -2px;
   }
 }
 .main-advanced .light .subtitle {
@@ -1253,15 +1260,28 @@ figure {
   margin: auto;
   height: auto;
   aspect-ratio: 1.75/1;
+  border-radius: var(--radius);
+  margin-block: 64px;
+  box-shadow: 0px 0px 12px rgba(32, 27, 27, 0.05);
 }
 .grid-flow-parent > * {
   position: absolute;
   inset: 0;
   width: 100% !important;
   height: 100% !important;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: bottom;
+     object-position: bottom;
 }
 .grid-flow-parent--lg {
-  width: 100%;
+  width: calc(100% - var(--body-padding-double));
+}
+@media screen and (max-width: 768px) {
+  .grid-flow-parent--lg {
+    width: 100%;
+    border-radius: 0;
+  }
 }
 .grid-flow-parent--md {
   width: 50%;

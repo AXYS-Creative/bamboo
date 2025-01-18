@@ -69,7 +69,7 @@ if (mqMouse.matches) {
       };
 
       planeMesh = new THREE.Mesh(
-        new THREE.PlaneGeometry(2.95, 2), // aspect ratio // default (2, 2)
+        new THREE.PlaneGeometry(2, 2), // aspect ratio // default (2, 2)
         new THREE.ShaderMaterial({
           uniforms: shaderUniforms,
           vertexShader,

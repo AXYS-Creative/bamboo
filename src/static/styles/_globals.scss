@@ -467,44 +467,41 @@ section {
   @include section-padding;
   position: relative; // prevents content from hiding (ultra wide mxixin maybe)
   background: var(--background-color);
-
-  &.hero {
-    padding-block: 380px;
-
-    @include mq-max("xxl") {
-      padding-block: 320px;
-    }
-
-    @include mq-max("md") {
-      padding-block: 248px;
-    }
-  }
 }
 
 .hero {
   @include column-start;
-  gap: 24px;
+  padding-block: 248px 0;
   height: 100vh;
 
-  @include mq-min("xl") {
-    height: max(100vh, 750px);
+  @include mq-min("lg") {
+    height: max(80vh, 750px);
+  }
+
+  @include mq-max("xxl") {
+    padding-block: 196px 0;
+    height: max(75vh, 500px);
   }
 
   @include mq-max("lg") {
-    align-items: center;
+    padding-block: 148px 0;
+    // text-align: center;
+    // align-items: center;
   }
 
   &__text {
     @include row-end(flex-start);
+    margin-block: 24px 64px;
 
     @include mq-max("xl") {
       flex-direction: column;
-      gap: 24px;
       align-items: flex-start;
+      gap: 24px;
     }
 
     @include mq-max("lg") {
-      align-items: center;
+      margin-block: 24px;
+      // align-items: center;
     }
   }
 
@@ -514,19 +511,11 @@ section {
     @include mq-min("lg") {
       margin-inline-end: 64px;
     }
-
-    @include mq-max("lg") {
-      text-align: center;
-    }
   }
 
   &__small {
     padding-block-end: 2.5ch;
     text-wrap: balance;
-
-    @include mq-max("lg") {
-      text-align: center;
-    }
   }
 }
 
@@ -564,7 +553,8 @@ figcaption,
 blockquote,
 input,
 textarea,
-label {
+label,
+li {
   @include body-font-styles;
   text-decoration: none;
 }
@@ -594,8 +584,10 @@ video {
   height: auto;
 }
 
-ul {
+ul,
+ol {
   list-style: none;
+  list-style-position: inside;
 }
 
 figure {
@@ -607,7 +599,7 @@ figure {
 .cta-1 {
   @include row-center(space-between);
   border: 1px solid var(--font-color--primary);
-  border-radius: var(--radius);
+  border-radius: var(--radius-btn);
   padding: 8px 16px;
 
   &__icon {

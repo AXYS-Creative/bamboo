@@ -111,9 +111,13 @@ $min-breakpoints: (
     font-size: max(61.5px, 6vw);
   }
 
+  @include mq-max("md") {
+    font-size: 48px;
+    letter-spacing: -2px;
+  }
+
   @include mq-max("sm") {
     font-size: 40px;
-    letter-spacing: -2px;
   }
 }
 @mixin h2 {

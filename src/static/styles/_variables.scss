@@ -48,6 +48,7 @@ $test-bg: rgba(navy, 0.75);
   --body-padding-double: calc(var(--body-padding) * 2);
 
   --radius: 48px;
+  --radius-btn: 48px;
 
   @media (max-width: 1512px) {
     --body-padding: 48px;
