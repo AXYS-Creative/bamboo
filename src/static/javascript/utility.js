@@ -1,4 +1,4 @@
-// export const root = document.documentElement; See portfolio for examples
+export const root = document.documentElement; // See portfolio for examples
 
 export const mqMouse = window.matchMedia("(hover: hover) and (pointer: fine)");
 
@@ -11,14 +11,24 @@ export const mqMouse = window.matchMedia("(hover: hover) and (pointer: fine)");
   yearText.setAttribute("datetime", currentYear);
 }
 
-// Return to top
+// Fetch footer height & handle bottom scroll
 {
-  const returnToTop = document.querySelector(".return-to-top"),
-    logo = document.querySelector(".header-logo");
+  const siteFooter = document.querySelector(".site-footer"),
+    scrollToBottom = document.querySelector(".scroll-bottom");
 
-  returnToTop.addEventListener("click", (e) => {
-    logo.focus();
+  scrollToBottom.addEventListener("focus", () => {
+    window.scrollTo({
+      top: document.body.scrollHeight - footerHeight,
+      behavior: "smooth", // works with lenis, wow
+    });
   });
+
+  const footerHeight = siteFooter.getBoundingClientRect().height;
+
+  document.documentElement.style.setProperty(
+    "--footer-height",
+    `${footerHeight}px`
+  );
 }
 
 // Detect Safari Browser

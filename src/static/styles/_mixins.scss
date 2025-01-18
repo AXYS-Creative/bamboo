@@ -251,6 +251,14 @@ $min-breakpoints: (
 
 //
 
+@mixin dark-theme {
+  --background-color: #{$black};
+  --font-color--primary: #{$white};
+
+  background-color: var(--background-color);
+  color: var(--font-color--primary);
+}
+
 @mixin mask-image($url) {
   mask-image: url($url);
   mask-size: contain;
