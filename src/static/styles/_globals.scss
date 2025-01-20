@@ -252,8 +252,6 @@ body {
 
     .nav-link {
       @include h2;
-      text-transform: uppercase;
-      line-height: 100%;
       height: 100%;
       translate: 0 100%;
       border-left: 4px solid transparent;
@@ -398,7 +396,7 @@ body {
       }
 
       @include mq-max("sm") {
-        @include h6;
+        @include h5;
       }
 
       &::before {
@@ -469,56 +467,6 @@ section {
   background: var(--background-color);
 }
 
-.hero {
-  @include column-start;
-  padding-block: 248px 0;
-  height: 100vh;
-
-  @include mq-min("lg") {
-    height: max(80vh, 750px);
-  }
-
-  @include mq-max("xxl") {
-    padding-block: 196px 0;
-    height: max(75vh, 500px);
-  }
-
-  @include mq-max("lg") {
-    padding-block: 148px 0;
-    // text-align: center;
-    // align-items: center;
-  }
-
-  &__text {
-    @include row-end(flex-start);
-    margin-block: 24px 64px;
-
-    @include mq-max("xl") {
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 24px;
-    }
-
-    @include mq-max("lg") {
-      margin-block: 24px;
-      // align-items: center;
-    }
-  }
-
-  &__title {
-    text-wrap: balance;
-
-    @include mq-min("lg") {
-      margin-inline-end: 64px;
-    }
-  }
-
-  &__small {
-    padding-block-end: 2.5ch;
-    text-wrap: balance;
-  }
-}
-
 h1,
 .h1 {
   @include h1;
@@ -557,6 +505,10 @@ label,
 li {
   @include body-font-styles;
   text-decoration: none;
+
+  &.body-lg {
+    @include body-font-styles(lg);
+  }
 }
 
 strong {
@@ -675,5 +627,72 @@ figure {
       width: 100%;
       height: 100%;
     }
+  }
+}
+
+// Partials
+.hero {
+  @include column-start;
+  padding-block: 248px 0;
+  height: 100vh;
+
+  @include mq-min("lg") {
+    height: max(80vh, 750px);
+  }
+
+  @include mq-max("xxl") {
+    padding-block: 196px 0;
+    height: max(75vh, 500px);
+  }
+
+  @include mq-max("lg") {
+    padding-block: 148px 0;
+  }
+
+  &__text {
+    @include row-end(flex-start);
+    margin-block: 24px 64px;
+
+    @include mq-max("xl") {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: var(--section-gap);
+    }
+
+    @include mq-max("lg") {
+      margin-block: 24px;
+    }
+  }
+
+  &__title {
+    text-wrap: balance;
+
+    @include mq-min("lg") {
+      margin-inline-end: 64px;
+    }
+  }
+
+  &__small {
+    padding-block-end: 2.5ch;
+    text-wrap: balance;
+  }
+}
+
+.paragraph {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--section-gap);
+
+  @include mq-max("lg") {
+    flex-direction: column;
+  }
+
+  .small-title {
+    width: 50%;
+  }
+
+  &__text {
+    @include column-start;
+    gap: 48px;
   }
 }

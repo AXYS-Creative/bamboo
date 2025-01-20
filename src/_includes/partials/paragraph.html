@@ -1,0 +1,19 @@
+{% if eyebrow_title %}
+  {% set heading_tag = 'h3' %}
+{% else %}
+  {% set heading_tag = 'h2' %}
+{% endif %}
+
+<section class="paragraph">
+  {% if eyebrow_title %}
+  <h2 class="h6 small-title">{{ eyebrow_title }}</h2>
+  {% endif %}
+  <div class="paragraph__text">
+    <{{ heading_tag }} class="h2">
+      {{ paragraph_title }}
+    </{{ heading_tag }}>
+    <p class="body-lg">{{ paragraph_text }}</p>
+
+    {% include "../components/cta-group.html" %}
+  </div>
+</section>

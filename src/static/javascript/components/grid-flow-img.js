@@ -22,6 +22,7 @@ if (mqMouse.matches) {
     }
 `;
 
+    // default gridUV (20.0, 20.0) (for square, adjust based on aspect ratio)
     const fragmentShader = `
     varying vec2 vUv;
     uniform sampler2D u_texture;    
@@ -30,7 +31,7 @@ if (mqMouse.matches) {
     uniform float u_aberrationIntensity;
 
     void main() {
-      vec2 gridUV = floor(vUv * vec2(20.0, 20.0)) / vec2(20.0, 20.0);
+      vec2 gridUV = floor(vUv * vec2(32.0, 24.0)) / vec2(32.0, 24.0);
       vec2 centerOfPixel = gridUV + vec2(1.0/20.0, 1.0/20.0);
       
       vec2 mouseDirection = u_mouse - u_prevMouse;
@@ -69,8 +70,7 @@ if (mqMouse.matches) {
       };
 
       planeMesh = new THREE.Mesh(
-        // new THREE.PlaneGeometry(4.25, 2.75), // aspect ratio // default (2, 2)
-        new THREE.PlaneGeometry(4.25, 2.75), // aspect ratio // default (2, 2)
+        new THREE.PlaneGeometry(3.25, 2), // aspect ratio // default (2, 2)
         new THREE.ShaderMaterial({
           uniforms: shaderUniforms,
           vertexShader,
