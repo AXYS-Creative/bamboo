@@ -104,12 +104,17 @@ $min-breakpoints: (
   text-wrap: balance;
 }
 
+// Page title
 @mixin h1 {
   @include heading-text(96px);
   letter-spacing: -4px;
 
   @include mq-max("xxl") {
-    font-size: max(61.5px, 6vw);
+    font-size: max(64px, 6vw);
+  }
+
+  @include mq-max("xl") {
+    letter-spacing: -3px;
   }
 
   @include mq-max("md") {
@@ -123,14 +128,15 @@ $min-breakpoints: (
 }
 @mixin h2 {
   @include heading-text(72px);
+  letter-spacing: -2px;
 
   @include mq-max("xxl") {
-    font-size: max(49.2px, 4.8vw);
+    font-size: max(48px, 4.4vw);
   }
 
   @include mq-max("md") {
     font-size: 48px; // matches h1 at this breakpoint
-    letter-spacing: -1px;
+    letter-spacing: -2px;
   }
 
   @include mq-max("sm") {
@@ -141,30 +147,32 @@ $min-breakpoints: (
   @include heading-text(52px);
 
   @include mq-max("xxl") {
-    font-size: max(39px, 3.4vw);
+    font-size: max(36px, 3.2vw);
+  }
+
+  @include mq-max("sm") {
+    font-size: 32px;
   }
 }
+// Perk List Title
 @mixin h4 {
   @include heading-text(36px);
 
   @include mq-max("xxl") {
-    font-size: max(28.7px, 2.4vw);
+    font-size: max(24px, 2vw);
   }
 }
+// Perk List Details
 @mixin h5 {
-  @include heading-text(24px);
+  @include heading-text(28px);
 
   @include mq-max("xxl") {
-    font-size: max(18px, 1.8vw);
+    font-size: max(18px, 1.6vw);
   }
 }
 @mixin h6 {
   @include heading-text(clamp(14px, 1.8vw, 20px));
   font-weight: 400;
-  color: var(--font-color--tertiary);
-  text-transform: uppercase;
-  white-space: nowrap;
-  letter-spacing: 0;
 }
 
 @mixin body-font-styles($size: md) {
@@ -212,7 +220,7 @@ $min-breakpoints: (
 
 @mixin section-padding($type: "regular") {
   padding-inline: var(--body-padding);
-  padding-block: var(--body-padding);
+  padding-block: var(--body-padding-double);
 
   @if $type == "thin" {
     @include mq-min("lg") {

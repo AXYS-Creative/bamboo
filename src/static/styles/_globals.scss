@@ -182,6 +182,11 @@ body {
   }
 
   &.away-from-top {
+    &:focus-within {
+      > * {
+        opacity: 1;
+      }
+    }
     > * {
       opacity: 0;
     }
@@ -491,6 +496,10 @@ h5,
 h6,
 .h6 {
   @include h6;
+  color: var(--font-color--tertiary);
+  text-transform: uppercase;
+  white-space: nowrap;
+  letter-spacing: 0;
 }
 
 p,
@@ -502,7 +511,9 @@ blockquote,
 input,
 textarea,
 label,
-li {
+li,
+dt,
+dd {
   @include body-font-styles;
   text-decoration: none;
 
@@ -553,6 +564,7 @@ figure {
   border: 1px solid var(--font-color--primary);
   border-radius: var(--radius-btn);
   padding: 8px 16px;
+  flex-shrink: 0;
 
   &__icon {
     --icon-size: 28px;
@@ -568,6 +580,7 @@ figure {
 .cta-2 {
   @include row-center(space-between);
   gap: 8px;
+  flex-shrink: 0;
 
   &__icon {
     --icon-size: 12px;
@@ -636,22 +649,24 @@ figure {
   padding-block: 248px 0;
   height: 100vh;
 
-  @include mq-min("lg") {
-    height: max(80vh, 750px);
-  }
+  @media all {
+    @include mq-min("lg") {
+      height: max(80vh, 750px);
+    }
 
-  @include mq-max("xxl") {
-    padding-block: 196px 0;
-    height: max(75vh, 500px);
-  }
+    @include mq-max("xxl") {
+      padding-block: 196px 0;
+      height: max(75vh, 500px);
+    }
 
-  @include mq-max("lg") {
-    padding-block: 148px 0;
+    @include mq-max("lg") {
+      padding-block: 148px 0;
+    }
   }
 
   &__text {
     @include row-end(flex-start);
-    margin-block: 24px 64px;
+    margin-block: var(--section-gap) var(--section-gap--lg);
 
     @include mq-max("xl") {
       flex-direction: column;
@@ -660,7 +675,7 @@ figure {
     }
 
     @include mq-max("lg") {
-      margin-block: 24px;
+      margin-block: var(--section-gap);
     }
   }
 
@@ -678,21 +693,112 @@ figure {
   }
 }
 
-.paragraph {
+.partners {
+  @include row-center(flex-end);
+
+  &__inner {
+    display: flex;
+    align-items: center;
+    gap: var(--section-gap);
+    width: var(--thin-section-width);
+
+    @include mq-max("lg") {
+      justify-content: center;
+    }
+  }
+
+  &__img {
+    width: 250px;
+
+    @include mq-max("md") {
+      width: 25%;
+    }
+  }
+
+  &__symbol {
+    @include h2;
+    color: var(--font-color--tertiary);
+  }
+}
+
+.paragraph,
+.perk-list {
   display: flex;
-  align-items: flex-start;
   gap: var(--section-gap);
 
   @include mq-max("lg") {
     flex-direction: column;
   }
 
-  .small-title {
-    width: 50%;
+  &__text {
+    @include mq-min("lg") {
+      width: var(--thin-section-width);
+    }
   }
 
+  .small-title {
+    flex: 1;
+  }
+
+  .cta-group {
+    justify-content: flex-start;
+    margin-block-start: var(--section-gap--lg);
+  }
+}
+
+.paragraph {
   &__text {
-    @include column-start;
-    gap: 48px;
+    &-title {
+      margin-block-end: var(--section-gap);
+    }
+  }
+}
+
+.perk-list {
+  &__list {
+    margin-block-start: var(--section-gap--lg);
+
+    &-item {
+      @include row-center(flex-start);
+      position: relative;
+      padding: 24px 0;
+
+      @include mq-max("lg") {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+      }
+
+      &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background: var(--font-color--secondary);
+        transition: 2s $cubic-ease;
+      }
+
+      &.animate {
+        &::before {
+          width: 100%;
+        }
+      }
+    }
+
+    &-term {
+      @include mq-min("xl") {
+        width: 36%;
+        flex-shrink: 0;
+      }
+      @include mq-min("xxl") {
+        width: 40%;
+      }
+    }
+
+    &-details {
+      color: var(--hero-color--primary);
+    }
   }
 }

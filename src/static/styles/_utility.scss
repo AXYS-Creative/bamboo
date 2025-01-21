@@ -30,36 +30,24 @@
   list-style: initial;
 }
 
+.fill-text {
+  display: inline; // for fill line-wrap
+  background-repeat: no-repeat;
+  background-clip: text;
+  -webkit-background-clip: text;
+  background-image: linear-gradient(currentColor, currentColor);
+  -webkit-text-fill-color: rgba(0, 0, 0, 0.25);
+
+  &--primary {
+    -webkit-text-fill-color: rgba(115, 146, 103, 0.5);
+  }
+}
+
 // Library
 
 @media all {
   .magnet {
     transition: translate 0.8s $cubic-ease-slow-finish;
-  }
-
-  .fill-text,
-  .fill-text-hover {
-    display: inline; // for fill line-wrap
-    background-repeat: no-repeat;
-    background-clip: text;
-    -webkit-background-clip: text;
-    background-image: linear-gradient(
-      var(--font-color--primary),
-      var(--font-color--primary)
-    );
-    // -webkit-text-fill-color: rgb(255 255 255 / 25%);
-    -webkit-text-fill-color: rgb(0 0 0 / 25%);
-    // filter: drop-shadow(0 0 1px grey); // optional for readability
-
-    &:is(.fill-text-hover) {
-      background-size: 0%;
-      -webkit-text-fill-color: rgb(255 255 255 / 50%);
-      transition: 0.5s ease;
-
-      @include desktop-hover {
-        background-size: 100%;
-      }
-    }
   }
 }
 
@@ -115,7 +103,7 @@
   }
 }
 
-// Approved as CMS Tokens
+// CMS Tokens
 
 @media all {
   .text-stroke {

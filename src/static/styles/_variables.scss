@@ -7,7 +7,7 @@ $neutral: #e4d0d0;
 $white: #f5f5f5;
 $page: #efe7da;
 $forest: #4d4b3c;
-$sage: #739267;
+$sage: rgb(115, 146, 103);
 $seafoam: #8eaaa5;
 
 $content-width: 1920px;
@@ -49,6 +49,9 @@ $test-bg: rgba(navy, 0.75);
   --body-padding-double: calc(var(--body-padding) * 2);
 
   --section-gap: 24px;
+  --section-gap--lg: 64px;
+
+  --thin-section-width: 74%;
 
   --radius: 48px;
   --radius-btn: 48px;
@@ -59,6 +62,8 @@ $test-bg: rgba(navy, 0.75);
 
   @media (max-width: 1024px) {
     --body-padding: 24px;
+    --section-gap--lg: 24px;
+    --thin-section-width: 100%;
   }
 }
 

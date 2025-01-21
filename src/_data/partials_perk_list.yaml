@@ -1,0 +1,23 @@
+perk_list_description: "
+At Bamboo Event Solutions, we understand that every event is unique, and the success of your event depends on seamless execution and comprehensive solutions. Our diverse range of offerings is designed to empower our clients at every stage of their event lifecycle.
+
+Here's a snapshot of what we can provide to ensure that your event stands out:
+"
+
+perk_list:
+  - title: RainFocus Configuration
+    description: Solution architect, system admin, project management
+  - title: Onsite Readiness
+    description: Pre onsite check-in / registration throughput analysis
+  - title: Event Optimization
+    description: Event post-mortem analysis, event technology architecture
+  - title: API Integrations
+    description: Integration configuration and consulting
+  - title: Staff Augmentation
+    description: Support for your team from our skilled professionals
+  - title: Onsite Delivery
+    description: We fill multiple roles onsite to ensure events run smoothly
+  - title: Training
+    description: General RainFocus onboarding,  client role specific training
+  - title: Enhanced Data Analysis
+    description: Data usage enhancements, reporting, dashboards, api usage
