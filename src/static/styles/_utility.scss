@@ -1,6 +1,10 @@
 .classic-link {
   position: relative;
 
+  @include mq-motion-allow {
+    transition: $ease;
+  }
+
   &::before {
     content: "";
     position: absolute;
@@ -9,15 +13,16 @@
     right: auto;
     width: 100%;
     height: 1px;
-    background-color: var(--font-color--primary);
+    background-color: currentColor;
 
     @include mq-motion-allow {
-      transition: 0.32s ease;
+      transition: $ease;
     }
   }
 
-  &:hover,
-  &:focus-visible {
+  @include desktop-hover {
+    color: var(--hero-color--primary);
+
     &::before {
       width: 0;
       left: auto;
@@ -39,15 +44,7 @@
   -webkit-text-fill-color: rgba(0, 0, 0, 0.25);
 
   &--primary {
-    -webkit-text-fill-color: rgba(115, 146, 103, 0.5);
-  }
-}
-
-// Library
-
-@media all {
-  .magnet {
-    transition: translate 0.8s $cubic-ease-slow-finish;
+    -webkit-text-fill-color: rgba($sage, 0.5); // not scalable
   }
 }
 

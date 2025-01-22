@@ -1,7 +1,7 @@
-import { mqMouse } from "../utility.js";
+import { mqMouse, mqMotionAllow } from "../utility.js";
 const flowImgs = document.querySelectorAll(".grid-flow-parent");
 
-if (mqMouse.matches) {
+if (mqMouse.matches && mqMotionAllow.matches) {
   const gridFlowEffect = (container) => {
     const img = container.querySelector(".grid-flow-img");
 

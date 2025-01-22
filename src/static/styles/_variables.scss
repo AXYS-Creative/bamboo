@@ -7,7 +7,7 @@ $neutral: #e4d0d0;
 $white: #f5f5f5;
 $page: #efe7da;
 $forest: #4d4b3c;
-$sage: rgb(115, 146, 103);
+$sage: #739267;
 $seafoam: #8eaaa5;
 
 $content-width: 1920px;
@@ -18,12 +18,17 @@ $z-index--header: 4;
 $z-index--loader: 10;
 
 // Easing
-$ease: 0.3s ease;
 $cubic-ease: cubic-bezier(0.18, 0.97, 0.47, 1);
 $cubic-ease-sudden: cubic-bezier(1, 0.07, 0.2, 1);
 $cubic-ease-sudden-back: cubic-bezier(0.8, -0.11, 0.11, 1.11);
 $cubic-ease-sudden-back-strong: cubic-bezier(0.77, -0.43, 0.11, 1.11);
 $cubic-ease-slow-finish: cubic-bezier(0.09, 0.9, 0.5, 1);
+
+$ease: 0.24s ease;
+$ease-c: 0.48s $cubic-ease;
+
+// Library
+$magnet: translate 0.5s $cubic-ease-slow-finish; // used in transition property
 
 // Debugging
 $test: 2px dashed rgba(crimson, 0.75);

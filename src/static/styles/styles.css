@@ -5,7 +5,7 @@
   --font-color--primary: #201b1b;
   --font-color--secondary: #e4d0d0;
   --font-color--tertiary: #8eaaa5;
-  --hero-color--primary: rgb(115, 146, 103);
+  --hero-color--primary: #739267;
   --hero-color--secondary: #4d4b3c;
   --link-color: #e4d0d0;
   --link-color-hover: #f5f5f5;
@@ -144,7 +144,7 @@ body:has(.load-complete) .hero div {
     right: var(--body-padding);
     top: 74px;
     translate: 0 -50%;
-    transition: opacity 0.3s ease;
+    transition: opacity 0.24s ease;
     display: block;
   }
 }
@@ -182,7 +182,7 @@ body:has(.load-complete) .hero div {
   height: 3px;
   border-radius: 12px;
   background: var(--font-color--primary);
-  transition: 0.3s ease;
+  transition: 0.24s ease;
 }
 .site-header .site-nav-btn-wrapper .site-nav-btn-line:first-of-type {
   translate: -50% calc(-50% - 4px);
@@ -900,6 +900,34 @@ figure {
   border-radius: var(--radius-btn);
   padding: 8px 16px;
   flex-shrink: 0;
+  gap: 1ch;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .cta-1 {
+    transition: 0.24s ease;
+  }
+}
+@media (hover: hover) and (pointer: fine) {
+  .cta-1:hover, .cta-1:focus-visible {
+    background: var(--hero-color--primary);
+    color: var(--background-color);
+    border-color: currentColor;
+  }
+}
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  .cta-1:hover, .cta-1:focus-visible {
+    animation: pulse-sm 0.24s ease;
+  }
+}
+@media (hover: hover) and (pointer: fine) {
+  .cta-1:hover .cta-1__icon, .cta-1:focus-visible .cta-1__icon {
+    background: var(--background-color);
+  }
+}
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  .cta-1:hover .cta-1__icon, .cta-1:focus-visible .cta-1__icon {
+    animation: pulse 0.24s ease 0.075s;
+  }
 }
 .cta-1__icon {
   --icon-size: 28px;
@@ -912,7 +940,12 @@ figure {
   background-color: var(--hero-color--primary);
   width: var(--icon-size);
   height: var(--icon-size);
-  translate: 8px 0;
+  margin-inline-end: -8px;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .cta-1__icon {
+    transition: translate 0.5s cubic-bezier(0.09, 0.9, 0.5, 1), background 0.24s ease;
+  }
 }
 
 .cta-2 {
@@ -921,6 +954,40 @@ figure {
   align-items: center;
   gap: 8px;
   flex-shrink: 0;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .cta-2 {
+    transition: 0.24s ease;
+  }
+}
+@media (hover: hover) and (pointer: fine) {
+  .cta-2:hover, .cta-2:focus-visible {
+    color: var(--hero-color--primary);
+  }
+  .cta-2:hover .cta-2__icon-group, .cta-2:focus-visible .cta-2__icon-group {
+    margin-left: 0;
+  }
+  .cta-2:hover .cta-2__circle path, .cta-2:focus-visible .cta-2__circle path {
+    stroke-dashoffset: 0;
+  }
+}
+.cta-2__icon-group {
+  --circle-size: 28px;
+  position: relative;
+  width: var(--circle-size);
+  height: var(--circle-size);
+  margin-left: -8px;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .cta-2__icon-group {
+    transition: 0.24s ease, translate 0.5s cubic-bezier(0.09, 0.9, 0.5, 1);
+  }
+}
+.cta-2__icon-group > * {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  translate: -50% -50%;
 }
 .cta-2__icon {
   --icon-size: 12px;
@@ -933,6 +1000,22 @@ figure {
   background-color: var(--hero-color--primary);
   width: var(--icon-size);
   height: var(--icon-size);
+  translate: calc(-50% + 0.25ch) -50%;
+}
+.cta-2__circle {
+  width: var(--circle-size);
+  height: var(--circle-size);
+}
+.cta-2__circle path {
+  stroke-width: 2px;
+  stroke-dashoffset: 203.0511932373px;
+  stroke-dasharray: 203.0511932373px;
+  stroke: var(--hero-color--primary);
+}
+@media (prefers-reduced-motion: no-preference) {
+  .cta-2__circle path {
+    transition: stroke-dashoffset 1.2s cubic-bezier(0.18, 0.97, 0.47, 1);
+  }
 }
 
 .cta-group {
@@ -1150,7 +1233,7 @@ figure {
   width: 0;
   height: 2px;
   background: var(--font-color--secondary);
-  transition: 2s cubic-bezier(0.18, 0.97, 0.47, 1);
+  transition: 1.2s cubic-bezier(0.18, 0.97, 0.47, 1);
 }
 .perk-list__list-item.animate::before {
   width: 100%;
@@ -1173,6 +1256,11 @@ figure {
 .classic-link {
   position: relative;
 }
+@media (prefers-reduced-motion: no-preference) {
+  .classic-link {
+    transition: 0.24s ease;
+  }
+}
 .classic-link::before {
   content: "";
   position: absolute;
@@ -1181,17 +1269,22 @@ figure {
   right: auto;
   width: 100%;
   height: 1px;
-  background-color: var(--font-color--primary);
+  background-color: currentColor;
 }
 @media (prefers-reduced-motion: no-preference) {
   .classic-link::before {
-    transition: 0.32s ease;
+    transition: 0.24s ease;
   }
 }
-.classic-link:hover::before, .classic-link:focus-visible::before {
-  width: 0;
-  left: auto;
-  right: 0;
+@media (hover: hover) and (pointer: fine) {
+  .classic-link:hover, .classic-link:focus-visible {
+    color: var(--hero-color--primary);
+  }
+  .classic-link:hover::before, .classic-link:focus-visible::before {
+    width: 0;
+    left: auto;
+    right: 0;
+  }
 }
 
 .classic-list {
@@ -1210,11 +1303,6 @@ figure {
   -webkit-text-fill-color: rgba(115, 146, 103, 0.5);
 }
 
-@media all {
-  .magnet {
-    transition: translate 0.8s cubic-bezier(0.09, 0.9, 0.5, 1);
-  }
-}
 @media all {
   .lg-up {
     display: none;
@@ -1289,6 +1377,22 @@ figure {
   }
   .color-secondary {
     color: var(--hero-color--secondary);
+  }
+}
+@keyframes pulse {
+  0%, 100% {
+    scale: 1;
+  }
+  50% {
+    scale: 1.075;
+  }
+}
+@keyframes pulse-sm {
+  0%, 100% {
+    scale: 1;
+  }
+  50% {
+    scale: 1.025;
   }
 }
 .main-advanced .grid-flow-img-section {
@@ -1428,8 +1532,10 @@ figure {
 }
 
 .main-style-guide .hero {
+  height: auto;
   align-items: flex-start;
-  padding-block: 216px;
+  gap: var(--section-gap);
+  padding-block: 248px;
 }
 @media screen and (max-width: 768px) {
   .main-style-guide .hero {
@@ -1545,6 +1651,11 @@ figure {
   margin-block: 64px;
   box-shadow: 0px 0px 12px rgba(32, 27, 27, 0.05);
 }
+@media (prefers-reduced-motion: reduce) {
+  .grid-flow-parent canvas {
+    display: none !important;
+  }
+}
 .grid-flow-parent > * {
   position: absolute;
   inset: 0;
@@ -1571,30 +1682,6 @@ figure {
   .grid-flow-parent--md {
     width: 100%;
   }
-}
-
-.horizontal-scroll {
-  position: relative;
-  overflow: hidden;
-  height: 100vh;
-}
-.horizontal-scroll .container {
-  display: flex;
-  align-items: center;
-  height: 80vh;
-}
-.horizontal-scroll .container .slider {
-  display: flex;
-  gap: 12px;
-}
-.horizontal-scroll .figure {
-  width: min(24vw, 464px);
-  aspect-ratio: 586/880;
-  overflow: hidden;
-}
-.horizontal-scroll .figure img {
-  height: 100%;
-  width: auto;
 }
 
 .marquee {

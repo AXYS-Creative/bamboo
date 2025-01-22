@@ -7,8 +7,12 @@
     <dl class="perk-list__list">
       {% for perk in partials_perk_list.perk_list %}
       <div class="perk-list__list-item gsap-animate">
-        <dt class="perk-list__list-term h4 fill-text">{{ perk.title }}</dt>
-        <dd class="perk-list__list-details h5 fill-text fill-text--primary">
+        <dt class="perk-list__list-term h4 fill-text quick-fill">
+          {{ perk.title }}
+        </dt>
+        <dd
+          class="perk-list__list-details h5 fill-text quick-fill fill-text--primary"
+        >
           {{ perk.description }}
         </dd>
       </div>

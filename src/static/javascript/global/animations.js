@@ -50,85 +50,43 @@ responsiveGsap.add(
       });
     }
 
-    // Library - Lift any desired code blocks out, then delete from production
+    // Fill Text - Scrub only
     {
-      // Fill Text - Scrub only
-      {
-        // Use 'fill-text' for default, then 'quick-fill' or 'slow-fill' to modify animation end
-        const fillText = document.querySelectorAll(".fill-text");
+      // Use 'fill-text' for default, then 'quick-fill' or 'slow-fill' to modify animation end
+      const fillText = document.querySelectorAll(".fill-text");
 
-        if (fillText) {
-          fillText.forEach((el) => {
-            let end = "bottom 60%";
+      if (fillText) {
+        fillText.forEach((el) => {
+          let end = "bottom 60%";
 
-            // Modifier classes –— Higher percentage ends the animation faster
-            if (el.classList.contains("quick-fill")) {
-              end = "bottom 80%";
-            } else if (el.classList.contains("slow-fill")) {
-              end = "bottom 40%";
-            }
+          // Modifier classes –— Higher percentage ends the animation faster
+          if (el.classList.contains("quick-fill")) {
+            end = "bottom 80%";
+          } else if (el.classList.contains("slow-fill")) {
+            end = "bottom 40%";
+          }
 
-            gsap.fromTo(
-              el,
-              {
-                backgroundSize: "0%",
-              },
-              {
-                backgroundSize: "100%",
-                scrollTrigger: {
-                  trigger: el,
-                  start: "top 90%",
-                  end: end,
-                  scrub: 1,
-                },
-              }
-            );
-          });
-        }
-      }
-
-      // Horizontal Scroll (pinned section)
-      {
-        const horizontalScroll =
-          document.querySelectorAll(".horizontal-scroll");
-
-        horizontalScroll.forEach((el) => {
-          let container = el.querySelector(".container");
-          let slider = el.querySelector(".slider");
-          const sliderWidth = slider.scrollWidth;
-          const containerWidth = container.offsetWidth;
-          const distanceToTranslate = sliderWidth - containerWidth;
-
-          let duration = maxSm ? "+=150%" : "+=200%";
-
-          // Actual Pinning
-          gsap.to(el, {
-            scrollTrigger: {
-              trigger: el,
-              start: "top top",
-              end: duration,
-              pin: true,
-            },
-          });
-
-          // Slider Along X-Axis
           gsap.fromTo(
-            slider,
-            { x: 0 },
+            el,
             {
-              x: () => -distanceToTranslate,
-              ease: "none",
+              backgroundSize: "0%",
+            },
+            {
+              backgroundSize: "100%",
               scrollTrigger: {
                 trigger: el,
-                start: "top top",
-                end: duration,
-                scrub: maxSm ? 1 : 0.5,
+                start: "top 90%",
+                end: end,
+                scrub: 1,
               },
             }
           );
         });
       }
+    }
 
+    // Library - Lift any desired code blocks out, then delete from production
+    {
       // Marquee animations
       {
         let marqueeSpeed = maxSm ? 20 : maxMd ? 24 : 28;

@@ -120,7 +120,7 @@ body {
       @include right-spacing;
       top: 74px;
       translate: 0 -50%;
-      transition: opacity 0.3s ease;
+      transition: opacity $ease;
       // mix-blend-mode: difference;
       display: block;
     }
@@ -156,7 +156,7 @@ body {
         height: 3px;
         border-radius: 12px;
         background: var(--font-color--primary);
-        transition: 0.3s ease;
+        transition: $ease;
 
         &:first-of-type {
           translate: -50% calc(-50% - $line-offset);
@@ -260,7 +260,7 @@ body {
       height: 100%;
       translate: 0 100%;
       border-left: 4px solid transparent;
-      // transition: 0.2s ease, translate 0.3s ease 0.6s;
+      // transition: 0.2s ease, translate $ease 0.6s;
 
       &:hover,
       &:focus-visible {
@@ -565,6 +565,29 @@ figure {
   border-radius: var(--radius-btn);
   padding: 8px 16px;
   flex-shrink: 0;
+  gap: 1ch;
+
+  @include mq-motion-allow {
+    transition: $ease;
+  }
+
+  @include desktop-hover {
+    background: var(--hero-color--primary);
+    color: var(--background-color);
+    border-color: currentColor;
+
+    @include mq-motion-allow {
+      animation: pulse-sm $ease;
+    }
+
+    .cta-1__icon {
+      background: var(--background-color);
+
+      @include mq-motion-allow {
+        animation: pulse $ease 0.075s;
+      }
+    }
+  }
 
   &__icon {
     --icon-size: 28px;
@@ -573,7 +596,11 @@ figure {
     background-color: var(--hero-color--primary);
     width: var(--icon-size);
     height: var(--icon-size);
-    translate: 8px 0;
+    margin-inline-end: -8px;
+
+    @include mq-motion-allow {
+      transition: $magnet, background $ease;
+    }
   }
 }
 
@@ -582,6 +609,39 @@ figure {
   gap: 8px;
   flex-shrink: 0;
 
+  @include mq-motion-allow {
+    transition: $ease;
+  }
+
+  @include desktop-hover {
+    color: var(--hero-color--primary);
+
+    .cta-2__icon-group {
+      margin-left: 0;
+    }
+
+    .cta-2__circle path {
+      stroke-dashoffset: 0;
+    }
+  }
+
+  &__icon-group {
+    --circle-size: 28px;
+
+    position: relative;
+    width: var(--circle-size);
+    height: var(--circle-size);
+    margin-left: -8px;
+
+    @include mq-motion-allow {
+      transition: $ease, $magnet;
+    }
+
+    & > * {
+      @include absolute-center;
+    }
+  }
+
   &__icon {
     --icon-size: 12px;
 
@@ -589,6 +649,23 @@ figure {
     background-color: var(--hero-color--primary);
     width: var(--icon-size);
     height: var(--icon-size);
+    translate: calc(-50% + 0.25ch) -50%;
+  }
+
+  &__circle {
+    width: var(--circle-size);
+    height: var(--circle-size);
+
+    path {
+      stroke-width: 2px;
+      stroke-dashoffset: 203.0511932373047px;
+      stroke-dasharray: 203.0511932373047px;
+      stroke: var(--hero-color--primary);
+
+      @include mq-motion-allow {
+        transition: stroke-dashoffset 1.2s $cubic-ease;
+      }
+    }
   }
 }
 
@@ -777,7 +854,7 @@ figure {
         width: 0;
         height: 2px;
         background: var(--font-color--secondary);
-        transition: 2s $cubic-ease;
+        transition: 1.2s $cubic-ease;
       }
 
       &.animate {
