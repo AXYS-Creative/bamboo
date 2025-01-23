@@ -185,16 +185,21 @@ body {
     &:focus-within {
       > * {
         opacity: 1;
+        pointer-events: all;
       }
     }
     > * {
       opacity: 0;
+      pointer-events: none;
     }
   }
 
-  // &.nav-active {
-
-  // }
+  &.nav-active {
+    > * {
+      opacity: 1;
+      pointer-events: all;
+    }
+  }
 }
 
 .site-nav {
@@ -632,6 +637,12 @@ figure {
     width: var(--circle-size);
     height: var(--circle-size);
     margin-left: -8px;
+
+    @include desktop-hover {
+      @include mq-motion-allow {
+        animation: pulse $ease;
+      }
+    }
 
     @include mq-motion-allow {
       transition: $ease, $magnet;

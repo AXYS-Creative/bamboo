@@ -1,17 +1,16 @@
 <section class="hero">
-  {% if eyebrow %}
+  {% if eyebrow_text %}
   <small class="eyebrow">
     {% if eyebrow_icon %}
     <img class="eyebrow__icon" src="{{ eyebrow_icon }}" alt="" />
-    {% endif %} Proud RainFocus partners
+    {% endif %}
+    <!-- prettier-ignore -->
+    {{ eyebrow_text }}
   </small>
   {% endif %}
   <div class="hero__text">
     <h1 class="hero__title">{{hero_title}}</h1>
-    <small class="hero__small">
-      Utilizing world-class event technology, we’ll help you deliver the best
-      event experience.
-    </small>
+    <small class="hero__small"> {{ hero_subtitle }} </small>
   </div>
 
   {% include "../components/cta-group.html" %}

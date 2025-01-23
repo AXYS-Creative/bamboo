@@ -16,8 +16,8 @@ export const mqMotionAllow = window.matchMedia(
 
 // Fetch footer height & handle bottom scroll
 {
-  const siteFooter = document.querySelector(".site-footer"),
-    scrollToBottom = document.querySelector(".scroll-bottom");
+  const siteFooter = document.querySelector(".site-footer");
+  const scrollToBottom = document.querySelectorAll(".scroll-bottom");
 
   // Function to set footer height
   const updateFooterHeight = () => {
@@ -29,12 +29,14 @@ export const mqMotionAllow = window.matchMedia(
   };
 
   // Handle scroll to bottom on focus
-  scrollToBottom.addEventListener("focus", () => {
-    window.scrollTo({
-      top: document.body.scrollHeight,
-      behavior: "smooth", // doesn't conflict with Lenis
-    });
-  });
+  scrollToBottom.forEach((el) =>
+    el.addEventListener("focus", () => {
+      window.scrollTo({
+        top: document.body.scrollHeight,
+        behavior: "smooth", // doesn't conflict with Lenis
+      });
+    })
+  );
 
   // Initial footer height set
   updateFooterHeight();

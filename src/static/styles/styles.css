@@ -201,9 +201,15 @@ body:has(.load-complete) .hero div {
 }
 .site-header.away-from-top:focus-within > * {
   opacity: 1;
+  pointer-events: all;
 }
 .site-header.away-from-top > * {
   opacity: 0;
+  pointer-events: none;
+}
+.site-header.nav-active > * {
+  opacity: 1;
+  pointer-events: all;
 }
 
 .site-nav {
@@ -978,6 +984,11 @@ figure {
   height: var(--circle-size);
   margin-left: -8px;
 }
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  .cta-2__icon-group:hover, .cta-2__icon-group:focus-visible {
+    animation: pulse 0.24s ease;
+  }
+}
 @media (prefers-reduced-motion: no-preference) {
   .cta-2__icon-group {
     transition: 0.24s ease, translate 0.5s cubic-bezier(0.09, 0.9, 0.5, 1);
@@ -1548,23 +1559,14 @@ figure {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 86vh;
-  height: 86dvh;
-}
-@media screen and (max-width: 1512px) {
-  .error {
-    height: 100vh;
-    height: 100dvh;
-  }
-}
-@media screen and (max-width: 768px) {
-  .error {
-    height: 92vh;
-    height: 92dvh;
-  }
+  height: 100lvh;
 }
 .error h1 {
   margin-block-end: 24px;
+}
+.error h1 span {
+  letter-spacing: 6px;
+  color: var(--hero-color--primary);
 }
 .error p {
   margin-block-end: 48px;
