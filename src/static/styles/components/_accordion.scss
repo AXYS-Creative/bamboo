@@ -3,7 +3,7 @@
   flex-direction: column;
 
   &-btn {
-    $border: 2px solid var(--font-color--secondary);
+    $border: var(--border-bold-girth) solid var(--border-bold-color);
 
     border-bottom: $border;
     text-align: left;
@@ -36,13 +36,13 @@
         gap: 12px;
       }
 
-      label {
+      span {
         @include inherit-font;
         cursor: pointer;
       }
 
       &-icon {
-        --icon-size: 32px;
+        --icon-size: 28px;
 
         position: relative;
         background-color: var(--hero-color--primary);

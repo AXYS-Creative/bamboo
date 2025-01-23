@@ -8,15 +8,16 @@
 
 // Pages
 // prettier-ignore
-@import "./pages/advanced",
- "./pages/home",
+@import "./pages/home",
  "./pages/style-guide",
  "./pages/404";
 
-// Partials
+// Components
 // prettier-ignore
 @import "./components/accordion",
-  "./components/grid-flow-img";
+  "./components/cta-group",
+  "./components/grid-flow-img",
+  "./components/social-media";
 
 // Library // Delete after pulling files
 // prettier-ignore
