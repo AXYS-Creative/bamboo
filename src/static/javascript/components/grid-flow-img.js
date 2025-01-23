@@ -5,7 +5,7 @@ if (mqMouse.matches && mqMotionAllow.matches) {
   const gridFlowEffect = (container) => {
     const img = container.querySelector(".grid-flow-img");
 
-    let easeFactor = 0.1; // smaller = slower
+    let easeFactor = 0.075; // smaller = slower // Four instances to change
     let scene, camera, renderer, planeMesh;
     let mousePosition = { x: 0.5, y: 0.5 };
     let targetMousePosition = { x: 0.5, y: 0.5 };
@@ -119,7 +119,7 @@ if (mqMouse.matches && mqMotionAllow.matches) {
     container.addEventListener("mouseleave", handleMouseLeave);
 
     function handleMouseMove(event) {
-      easeFactor = 0.1;
+      easeFactor = 0.075;
       let rect = container.getBoundingClientRect();
       prevPosition = { ...targetMousePosition };
 
@@ -130,7 +130,7 @@ if (mqMouse.matches && mqMotionAllow.matches) {
     }
 
     function handleMouseEnter(event) {
-      easeFactor = 0.1;
+      easeFactor = 0.075;
       let rect = container.getBoundingClientRect();
 
       mousePosition.x = targetMousePosition.x =
@@ -140,7 +140,7 @@ if (mqMouse.matches && mqMotionAllow.matches) {
     }
 
     function handleMouseLeave() {
-      easeFactor = 0.1;
+      easeFactor = 0.075;
       targetMousePosition = { ...prevPosition };
     }
   };

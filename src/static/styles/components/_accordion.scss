@@ -1,18 +1,36 @@
 .accordion {
   display: flex;
   flex-direction: column;
-  gap: 48px;
 
   &-btn {
-    $transition: 0.4s ease;
+    $border: 2px solid var(--font-color--secondary);
 
-    border-bottom: 2px solid var(--font-color--primary);
+    border-bottom: $border;
     text-align: left;
+    padding-block: 24px;
+
+    // Don't use desktop-hover here
+    &:hover,
+    &:focus-visible {
+      .accordion-btn__title-icon {
+        rotate: 0deg;
+
+        @include mq-motion-allow {
+          transition: $magnet, 0.4s $cubic-ease, rotate $ease;
+          animation: pulse $ease;
+        }
+      }
+    }
+
+    &:first-of-type {
+      border-top: $border;
+    }
 
     &__title {
       @include row-start(space-between);
-      @include h4;
+      @include h5;
       gap: 24px;
+      transition: $ease-c;
 
       @include mq-max("sm") {
         gap: 12px;
@@ -24,8 +42,32 @@
       }
 
       &-icon {
+        --icon-size: 32px;
+
+        position: relative;
+        background-color: var(--hero-color--primary);
+        width: var(--icon-size);
+        height: var(--icon-size);
+        border-radius: 50%;
         display: inline-flex;
-        transition: 0.4s $cubic-ease, rotate $transition;
+        flex-shrink: 0;
+        rotate: -90deg;
+        transition: $magnet, $ease, rotate 0s;
+
+        .line {
+          @include absolute-center;
+          width: 50%;
+          height: 2px;
+          background: var(--background-color);
+
+          @include mq-motion-allow {
+            transition: $ease;
+          }
+
+          &:last-of-type {
+            rotate: 90deg;
+          }
+        }
       }
     }
 
@@ -33,7 +75,7 @@
       @include body-font-styles;
       display: grid;
       grid-template-rows: 0fr;
-      transition: $transition;
+      transition: $ease-c;
 
       &-inner {
         overflow: hidden;
@@ -41,12 +83,20 @@
     }
 
     &[aria-expanded="true"] {
+      .accordion-btn__title {
+        margin-bottom: 16px;
+      }
+
       .accordion-btn__content {
         grid-template-rows: 1fr;
       }
 
       .accordion-btn__title-icon {
-        rotate: 90deg;
+        rotate: 0deg;
+
+        .line:last-of-type {
+          rotate: 180deg;
+        }
       }
     }
   }

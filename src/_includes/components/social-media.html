@@ -4,14 +4,14 @@
   {% for link in social_media.links %}
   <li>
     <a
-      href="{{link.url}}"
+      href="{{ link.url }}"
       target="_blank"
-      class="social-media-link {% if tab_nav %}tab-element-nav{% else %}tab-element-page{% endif %}"
+      class="social-media-link {% if loop.last %}scroll-bottom{% endif %} {% if tab_nav %}tab-element-nav{% else %}tab-element-page{% endif %}"
       aria-label="{{ link.title }}"
     >
       <span
         class="social-media-link__img"
-        style="mask-image: url({{ link.src }});"
+        style="mask-image: url({{link.src}});"
       ></span>
     </a>
   </li>

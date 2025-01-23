@@ -1,0 +1,14 @@
+<section class="faq">
+  <h2 class="h6">Frequently asked questions</h2>
+
+  <!-- prettier-ignore -->
+  {% set accordion_list = library_accordion.accordion_data %} 
+  {% include "../components/accordion.html" %}
+
+  <p>
+    Still have questions? We’re happy to go over them with you! Feel free to
+    book a call with us or contact us below!
+  </p>
+
+  {% include "../components/cta-group.html" %}
+</section>

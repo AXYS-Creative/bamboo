@@ -973,6 +973,13 @@ figure {
   .cta-2:hover .cta-2__icon-group, .cta-2:focus-visible .cta-2__icon-group {
     margin-left: 0;
   }
+}
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  .cta-2:hover .cta-2__icon-group, .cta-2:focus-visible .cta-2__icon-group {
+    transition: 0.36s cubic-bezier(0, 1.2, 0.56, 1.39), translate 0.5s cubic-bezier(0.09, 0.9, 0.5, 1);
+  }
+}
+@media (hover: hover) and (pointer: fine) {
   .cta-2:hover .cta-2__circle path, .cta-2:focus-visible .cta-2__circle path {
     stroke-dashoffset: 0;
   }
@@ -991,7 +998,7 @@ figure {
 }
 @media (prefers-reduced-motion: no-preference) {
   .cta-2__icon-group {
-    transition: 0.24s ease, translate 0.5s cubic-bezier(0.09, 0.9, 0.5, 1);
+    transition: 0.64s cubic-bezier(0.18, 0.97, 0.47, 1), translate 0.5s cubic-bezier(0.09, 0.9, 0.5, 1);
   }
 }
 .cta-2__icon-group > * {
@@ -1137,6 +1144,26 @@ figure {
   text-wrap: balance;
 }
 
+.faq {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  margin: auto;
+}
+@media screen and (min-width: 1025px) {
+  .faq {
+    width: 75%;
+  }
+}
+.faq .accordion {
+  width: 100%;
+  margin-block: var(--section-gap--lg) var(--section-gap);
+}
+.faq .cta-group {
+  margin-block-start: var(--section-gap--lg);
+}
+
 .partners {
   display: flex;
   justify-content: flex-end;
@@ -1191,6 +1218,7 @@ figure {
 .paragraph,
 .perk-list {
   display: flex;
+  align-items: flex-start;
   gap: var(--section-gap);
 }
 @media screen and (max-width: 1024px) {
@@ -1208,6 +1236,14 @@ figure {
 .paragraph .small-title,
 .perk-list .small-title {
   flex: 1;
+}
+@media screen and (min-width: 1025px) {
+  .paragraph .small-title,
+  .perk-list .small-title {
+    position: sticky;
+    top: 50%;
+    translate: 0 -50%;
+  }
 }
 .paragraph .cta-group,
 .perk-list .cta-group {
@@ -1587,11 +1623,23 @@ figure {
 .accordion {
   display: flex;
   flex-direction: column;
-  gap: 48px;
 }
 .accordion-btn {
-  border-bottom: 2px solid var(--font-color--primary);
+  border-bottom: 2px solid var(--font-color--secondary);
   text-align: left;
+  padding-block: 24px;
+}
+.accordion-btn:hover .accordion-btn__title-icon, .accordion-btn:focus-visible .accordion-btn__title-icon {
+  rotate: 0deg;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .accordion-btn:hover .accordion-btn__title-icon, .accordion-btn:focus-visible .accordion-btn__title-icon {
+    transition: translate 0.5s cubic-bezier(0.09, 0.9, 0.5, 1), 0.4s cubic-bezier(0.18, 0.97, 0.47, 1), rotate 0.24s ease;
+    animation: pulse 0.24s ease;
+  }
+}
+.accordion-btn:first-of-type {
+  border-top: 2px solid var(--font-color--secondary);
 }
 .accordion-btn__title {
   display: flex;
@@ -1599,15 +1647,16 @@ figure {
   align-items: flex-start;
   color: var(--font-color--primary);
   font-family: var(--font-family--heading);
-  font-size: 36px;
+  font-size: 28px;
   font-weight: 300;
   line-height: 112%;
   text-wrap: balance;
   gap: 24px;
+  transition: 0.64s cubic-bezier(0.18, 0.97, 0.47, 1);
 }
 @media screen and (max-width: 1512px) {
   .accordion-btn__title {
-    font-size: max(24px, 2vw);
+    font-size: max(18px, 1.6vw);
   }
 }
 @media screen and (max-width: 480px) {
@@ -1622,8 +1671,33 @@ figure {
   cursor: pointer;
 }
 .accordion-btn__title-icon {
+  --icon-size: 32px;
+  position: relative;
+  background-color: var(--hero-color--primary);
+  width: var(--icon-size);
+  height: var(--icon-size);
+  border-radius: 50%;
   display: inline-flex;
-  transition: 0.4s cubic-bezier(0.18, 0.97, 0.47, 1), rotate 0.4s ease;
+  flex-shrink: 0;
+  rotate: -90deg;
+  transition: translate 0.5s cubic-bezier(0.09, 0.9, 0.5, 1), 0.24s ease, rotate 0s;
+}
+.accordion-btn__title-icon .line {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  translate: -50% -50%;
+  width: 50%;
+  height: 2px;
+  background: var(--background-color);
+}
+@media (prefers-reduced-motion: no-preference) {
+  .accordion-btn__title-icon .line {
+    transition: 0.24s ease;
+  }
+}
+.accordion-btn__title-icon .line:last-of-type {
+  rotate: 90deg;
 }
 .accordion-btn__content {
   --font-size: 18px;
@@ -1633,7 +1707,7 @@ figure {
   font-weight: 400;
   display: grid;
   grid-template-rows: 0fr;
-  transition: 0.4s ease;
+  transition: 0.64s cubic-bezier(0.18, 0.97, 0.47, 1);
 }
 @media screen and (max-width: 1512px) {
   .accordion-btn__content {
@@ -1648,11 +1722,17 @@ figure {
 .accordion-btn__content-inner {
   overflow: hidden;
 }
+.accordion-btn[aria-expanded=true] .accordion-btn__title {
+  margin-bottom: 16px;
+}
 .accordion-btn[aria-expanded=true] .accordion-btn__content {
   grid-template-rows: 1fr;
 }
 .accordion-btn[aria-expanded=true] .accordion-btn__title-icon {
-  rotate: 90deg;
+  rotate: 0deg;
+}
+.accordion-btn[aria-expanded=true] .accordion-btn__title-icon .line:last-of-type {
+  rotate: 180deg;
 }
 
 .grid-flow-parent {

@@ -24,7 +24,7 @@ cta_2_target: "_blank"
 
 <!-- prettier-ignore -->
 {% set grid_flow_img_src = '/static/img/library/library-sample-1.webp' %}
-{% set grid_flow_img_alt = '' %}
+{% set grid_flow_img_alt = 'A group of attendees celebrating at an event' %}
 {% set grid_flow_img_size = 'lg' %}
 {% set grid_flow_img_loading = 'eager' %}
 {% set grid_flow_img_width = 1024 %}
@@ -46,9 +46,20 @@ cta_2_target: "_blank"
 {% include './_includes/partials/partners.html' %}
 
 <!-- prettier-ignore -->
-{% set small_title = 'Our offer' %}
+{% set small_title = 'Our services' %}
 {% set cta_1_text = 'Book Consultation' %}
 {% set cta_2_text = 'Learn More' %}
-{% set cta_2_description = 'Learn more about our platform' %}
+{% set cta_2_description = 'Learn more about the services we offer' %}
 {% set cta_2_url = '/about' %}
 {% include './_includes/partials/perk-list.html' %}
+
+<!-- prettier-ignore -->
+{% set grid_flow_img_src = '/static/img/library/library-sample-2.webp' %}
+{% set grid_flow_img_alt = 'A group of attendees celebrating at an event' %}
+{% set grid_flow_img_size = 'lg' %}
+{% set grid_flow_img_loading = 'eager' %}
+{% set grid_flow_img_width = 1024 %}
+{% set grid_flow_img_height = 586 %}
+{% include './_includes/components/grid-flow-img.html' %}
+
+{% include "./_includes/partials/faq.html" %}

@@ -623,6 +623,10 @@ figure {
 
     .cta-2__icon-group {
       margin-left: 0;
+
+      @include mq-motion-allow {
+        transition: 0.36s $cubic-ease-back-strong, $magnet;
+      }
     }
 
     .cta-2__circle path {
@@ -645,7 +649,7 @@ figure {
     }
 
     @include mq-motion-allow {
-      transition: $ease, $magnet;
+      transition: $ease-c, $magnet;
     }
 
     & > * {
@@ -781,6 +785,24 @@ figure {
   }
 }
 
+.faq {
+  @include column-start;
+  margin: auto;
+
+  @include mq-min("lg") {
+    width: 75%;
+  }
+
+  .accordion {
+    width: 100%;
+    margin-block: var(--section-gap--lg) var(--section-gap);
+  }
+
+  .cta-group {
+    margin-block-start: var(--section-gap--lg);
+  }
+}
+
 .partners {
   @include row-center(flex-end);
 
@@ -812,6 +834,7 @@ figure {
 .paragraph,
 .perk-list {
   display: flex;
+  align-items: flex-start;
   gap: var(--section-gap);
 
   @include mq-max("lg") {
@@ -826,6 +849,12 @@ figure {
 
   .small-title {
     flex: 1;
+
+    @include mq-min("lg") {
+      position: sticky;
+      top: 50%;
+      translate: 0 -50%;
+    }
   }
 
   .cta-group {

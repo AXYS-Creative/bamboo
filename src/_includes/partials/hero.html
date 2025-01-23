@@ -9,7 +9,9 @@
   </small>
   {% endif %}
   <div class="hero__text">
-    <h1 class="hero__title">{{hero_title}}</h1>
+    <h1 class="hero__title" aria-label="{{ hero_title | removeTokens }}">
+      <span aria-hidden="true">{{ hero_title }}</span>
+    </h1>
     <small class="hero__small"> {{ hero_subtitle }} </small>
   </div>
 

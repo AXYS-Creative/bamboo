@@ -6,7 +6,11 @@
 
 <section class="paragraph">
   {% if small_title %}
-  <h2 class="h6 small-title">{{ small_title }}</h2>
+  <h2 class="h6 small-title" aria-label="{{ small_title | removeTokens }}">
+    <span aria-hidden="true">
+      {{ small_title }}
+    </span>
+  </h2>
   {% endif %}
   <div class="paragraph__text">
     <{{ heading_tag }} class="h2 paragraph__text-title">
