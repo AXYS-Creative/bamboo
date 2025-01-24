@@ -85,68 +85,65 @@ responsiveGsap.add(
       }
     }
 
-    // Library - Lift any desired code blocks out, then delete from production
+    // Marquee animations
     {
-      // Marquee animations
+      let marqueeSpeed = maxSm ? 16 : maxMd ? 20 : 24;
+
+      // Standard
       {
-        let marqueeSpeed = maxSm ? 20 : maxMd ? 24 : 28;
+        const autoMarquees = gsap.utils.toArray(".marquee-inner");
 
-        // Standard
-        {
-          const autoMarquees = gsap.utils.toArray(".marquee-inner");
+        const marqueeTweens = autoMarquees.map((elem) =>
+          gsap
+            .to(elem, {
+              xPercent: -50,
+              repeat: -1,
+              duration: marqueeSpeed,
+              ease: "linear",
+            })
+            .totalProgress(0.5)
+        );
 
-          const marqueeTweens = autoMarquees.map((elem) =>
-            gsap
-              .to(elem, {
-                xPercent: -50,
-                repeat: -1,
-                duration: marqueeSpeed,
-                ease: "linear",
-              })
-              .totalProgress(0.5)
+        let currentScroll = 0;
+        const adjustTimeScale = () => {
+          const isScrollingDown = window.scrollY > currentScroll;
+          marqueeTweens.forEach((tween, index) =>
+            gsap.to(tween, {
+              timeScale: (index % 2 === 0) === isScrollingDown ? 1 : -1,
+            })
           );
+          currentScroll = window.scrollY;
+        };
 
-          let currentScroll = 0;
-          const adjustTimeScale = () => {
-            const isScrollingDown = window.scrollY > currentScroll;
-            marqueeTweens.forEach((tween, index) =>
-              gsap.to(tween, {
-                timeScale: (index % 2 === 0) === isScrollingDown ? 1 : -1,
-              })
-            );
-            currentScroll = window.scrollY;
-          };
+        window.addEventListener("scroll", adjustTimeScale);
+      }
 
-          window.addEventListener("scroll", adjustTimeScale);
-        }
+      // Scrub, use 'marquee_scrub' boolean prop
+      {
+        const scrubMarquees = gsap.utils.toArray(".marquee--scrub");
+        let sensitivity = 5;
 
-        // Scrub, use 'marquee_scrub' boolean prop
-        {
-          const scrubMarquees = gsap.utils.toArray(".marquee--scrub");
-          let sensitivity = 5;
+        scrubMarquees.forEach((scrubElem) => {
+          const marqueeInners = scrubElem.querySelectorAll(".marquee-inner");
 
-          scrubMarquees.forEach((scrubElem) => {
-            const marqueeInners = scrubElem.querySelectorAll(".marquee-inner");
-
-            marqueeInners.forEach((inner, index) => {
-              gsap.fromTo(
-                inner,
-                {
-                  x: index % 2 === 0 ? "0%" : `-${sensitivity}%`,
+          marqueeInners.forEach((inner, index) => {
+            gsap.fromTo(
+              inner,
+              {
+                x: index % 2 === 0 ? "0%" : `-${sensitivity}%`,
+              },
+              {
+                x: index % 2 === 0 ? `-${sensitivity}%` : "0%",
+                scrollTrigger: {
+                  trigger: scrubElem,
+                  start: "top bottom",
+                  end: "bottom top",
+                  scrub: 1,
                 },
-                {
-                  x: index % 2 === 0 ? `-${sensitivity}%` : "0%",
-                  scrollTrigger: {
-                    trigger: scrubElem,
-                    start: "top bottom",
-                    end: "bottom top",
-                    scrub: 1,
-                  },
-                }
-              );
-            });
+              }
+            );
           });
-        }
+        });
       }
     }
   }

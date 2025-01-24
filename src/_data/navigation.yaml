@@ -3,9 +3,9 @@
 items:
   - text: Home
     url: "/"
+  - text: About
+    url: "/about"
   - text: Style Guide
     url: "/style-guide"
-  - text: Library
-    url: "/library"
   - text: Blog
     url: "/blog"

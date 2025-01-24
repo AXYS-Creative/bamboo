@@ -1609,48 +1609,6 @@ figure {
   }
 }
 
-.social-media-links {
-  display: flex;
-  gap: 24px;
-}
-@media screen and (max-width: 768px) {
-  .social-media-links {
-    gap: 12px;
-  }
-}
-.social-media-links li.magnet {
-  transition: translate 0.5s cubic-bezier(0.09, 0.9, 0.5, 1);
-}
-.social-media-links .social-media-link {
-  --link-size: 24px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: var(--link-size);
-  height: var(--link-size);
-  overflow: hidden;
-}
-@media (hover: hover) and (pointer: fine) {
-  .social-media-links .social-media-link:hover .social-media-link__img, .social-media-links .social-media-link:focus-visible .social-media-link__img {
-    background: var(--hero-color--primary);
-  }
-}
-@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
-  .social-media-links .social-media-link:hover, .social-media-links .social-media-link:focus-visible {
-    animation: pulse 0.24s ease;
-  }
-}
-.social-media-links .social-media-link__img {
-  background: currentColor;
-  -webkit-mask-size: cover;
-          mask-size: cover;
-  -webkit-mask-position: center;
-          mask-position: center;
-  width: 100%;
-  height: 100%;
-  transition: 0.24s ease;
-}
-
 .marquee {
   color: var(--font-color--primary);
   font-family: var(--font-family--heading);
@@ -1692,8 +1650,50 @@ figure {
   font-family: inherit;
   font-size: inherit;
   font-weight: inherit;
-  line-height: 100%;
+  line-height: 1.25;
   display: inline-flex;
   text-wrap: nowrap;
   gap: 0.5ch;
+}
+
+.social-media-links {
+  display: flex;
+  gap: 24px;
+}
+@media screen and (max-width: 768px) {
+  .social-media-links {
+    gap: 12px;
+  }
+}
+.social-media-links li.magnet {
+  transition: translate 0.5s cubic-bezier(0.09, 0.9, 0.5, 1);
+}
+.social-media-links .social-media-link {
+  --link-size: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: var(--link-size);
+  height: var(--link-size);
+  overflow: hidden;
+}
+@media (hover: hover) and (pointer: fine) {
+  .social-media-links .social-media-link:hover .social-media-link__img, .social-media-links .social-media-link:focus-visible .social-media-link__img {
+    background: var(--hero-color--primary);
+  }
+}
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  .social-media-links .social-media-link:hover, .social-media-links .social-media-link:focus-visible {
+    animation: pulse 0.24s ease;
+  }
+}
+.social-media-links .social-media-link__img {
+  background: currentColor;
+  -webkit-mask-size: cover;
+          mask-size: cover;
+  -webkit-mask-position: center;
+          mask-position: center;
+  width: 100%;
+  height: 100%;
+  transition: 0.24s ease;
 }/*# sourceMappingURL=styles.css.map */
