@@ -447,6 +447,11 @@ body {
         width: 50%;
       }
     }
+
+    .credits {
+      // Use sr-only utility to hide
+      margin-right: auto;
+    }
   }
 }
 
@@ -627,12 +632,8 @@ figure {
 }
 
 .faq {
+  @include section-padding(thin);
   @include column-start;
-  margin: auto;
-
-  @include mq-min("lg") {
-    width: 75%;
-  }
 
   .accordion {
     width: 100%;
@@ -683,9 +684,7 @@ figure {
   }
 
   &__text {
-    @include mq-min("lg") {
-      width: var(--thin-section-width);
-    }
+    width: var(--thin-section-width);
   }
 
   .small-title {

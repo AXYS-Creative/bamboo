@@ -6,6 +6,10 @@
     gap: 12px;
   }
 
+  li.magnet {
+    transition: $magnet;
+  }
+
   .social-media-link {
     --link-size: 24px;
 
@@ -13,19 +17,23 @@
     width: var(--link-size);
     height: var(--link-size);
     overflow: hidden;
-    transition: 0.25s ease;
 
-    &:hover,
-    &:focus-visible {
-      scale: 1.1;
+    @include desktop-hover {
+      .social-media-link__img {
+        background: var(--hero-color--primary);
+      }
+      @include mq-motion-allow {
+        animation: pulse $ease;
+      }
     }
 
     &__img {
-      background-color: white;
+      background: currentColor;
       mask-size: cover;
       mask-position: center;
       width: 100%;
       height: 100%;
+      transition: $ease;
     }
   }
 }
