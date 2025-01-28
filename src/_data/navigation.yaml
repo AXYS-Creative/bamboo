@@ -5,7 +5,9 @@ items:
     url: "/"
   - text: About
     url: "/about"
-  - text: Style Guide
-    url: "/style-guide"
-  - text: Blog
-    url: "/blog"
+  - text: FAQ
+    url: "/faq"
+  # - text: Style Guide
+  #   url: "/style-guide"
+  # - text: Blog
+  #   url: "/blog"

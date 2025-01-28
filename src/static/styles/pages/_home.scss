@@ -1,1 +1,24 @@
+.main-home {
+  .hero {
+    padding-block-end: 0;
 
+    @media all {
+      @include mq-min("xxl") {
+        height: clamp(750px, 80vh, 1250px);
+      }
+
+      @include mq-max("xxl") {
+        padding-block: 196px 0;
+        height: clamp(625px, 75vh, 1100px);
+      }
+
+      @include mq-max("lg") {
+        padding-block: 128px 0;
+      }
+
+      @include mq-max("md") {
+        height: clamp(500px, 75vh, 950px);
+      }
+    }
+  }
+}

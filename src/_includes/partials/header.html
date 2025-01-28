@@ -2,7 +2,7 @@
   <a class="header-logo" href="{{ settings.url }}">
     <img
       class="header-logo__icon"
-      src="../../static/img/logo-dark.svg"
+      src="/static/img/logo-dark.svg"
       alt="{{ meta_data.site_name }} logo"
       width="116"
       height="32"
@@ -18,6 +18,11 @@
       </a>
     </li>
     {% endfor %}
+    <li>
+      <!-- prettier-ignore -->
+      {% set cta_2_text = '' %}
+      {% include "../components/cta-group.html" %}
+    </li>
   </ul>
   {% endif %}
 

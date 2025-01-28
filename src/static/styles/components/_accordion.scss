@@ -75,6 +75,7 @@
       @include body-font-styles;
       display: grid;
       grid-template-rows: 0fr;
+      visibility: hidden;
       transition: $ease-c;
 
       &-inner {
@@ -89,6 +90,7 @@
 
       .accordion-btn__content {
         grid-template-rows: 1fr;
+        visibility: visible;
       }
 
       .accordion-btn__title-icon {

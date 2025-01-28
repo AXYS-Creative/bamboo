@@ -1,5 +1,6 @@
 .cta-1 {
   @include row-center(space-between);
+  background: var(--background-color);
   border: 1px solid var(--font-color--primary);
   border-radius: var(--radius-btn);
   padding: 8px 16px;

@@ -1,0 +1,25 @@
+accordion_data:
+  - title: "Dave Massey"
+    role: "CEO"
+    content: "Bio here"
+    img: /static/img/library/library-sample-1.webp
+    social_media:
+      - title: LinkedIn
+        url: https://www.linkedin.com
+        src: /static/img/icon-social-square-x.svg
+      - title: Instagram
+        url: https://www.instagram.com
+        src: /static/img/icon-social-square-instagram.svg
+  - title: "Brandon Rich"
+    role: "CCO"
+    content: "Bio here"
+    img: /static/img/library/library-sample-1.webp
+    social_media:
+      - title: LinkedIn
+        url: https://www.linkedin.com
+        src: /static/img/icon-social-square-x.svg
+      - title: Instagram
+        url: https://www.instagram.com
+        src: /static/img/icon-social-square-instagram.svg
+
+accordion_behavior_single: false

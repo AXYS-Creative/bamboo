@@ -1,5 +1,5 @@
 <div
-  class="accordion {%if library_accordion.accordion_behavior_single %}single-accordion{% endif %}"
+  class="accordion {{ accordion_class }} {%if library_accordion.accordion_behavior_single %}single-accordion{% endif %}"
 >
   {% for accordion in accordion_list %}
   <button
@@ -8,7 +8,10 @@
     aria-controls="accordion-item-{{ loop.index }}"
   >
     <div class="accordion-btn__title">
-      <span>{{ accordion.title }}</span>
+      <span class="accordion-btn__title-name">{{ accordion.title }}</span>
+      {% if accordion.role %}
+      <span class="accordion-btn__title-role">{{ accordion.role }}</span>
+      {% endif %}
       <span
         class="accordion-btn__title-icon magnet magnet-strong"
         aria-hidden="true"
@@ -20,6 +23,18 @@
     <div class="accordion-btn__content" id="accordion-item-{{ loop.index }}">
       <div class="accordion-btn__content-inner">
         <p>{{ accordion.content }}</p>
+        {% if accordion.img %}
+        <img
+          class="accordion-btn__content-img"
+          src="{{ accordion.img }}"
+          alt=""
+        />
+        {% endif %}
+        <!-- prettier-ignore -->
+        {% if accordion.social_media %}
+          {% set social_data = accordion.social_media %}
+          {% include "./social-media.html" %} 
+        {% endif %}
       </div>
     </div>
   </button>

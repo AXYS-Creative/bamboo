@@ -70,7 +70,6 @@ body {
 .main-content {
   @include ultra-wide(var(--background-color), 0); // bg-color controlled here
   position: relative;
-  background: var(--background-color);
   margin-block-end: var(--footer-height); // For site-footer (behind content)
 }
 
@@ -584,23 +583,8 @@ figure {
 
 // Partials
 .hero {
+  @include full-viewport-section;
   @include column-start;
-  padding-block: 248px 0;
-
-  @media all {
-    @include mq-min("xxl") {
-      height: clamp(750px, 80vh, 1250px);
-    }
-
-    @include mq-max("xxl") {
-      padding-block: 196px 0;
-      height: max(75vh, 500px);
-    }
-
-    @include mq-max("lg") {
-      padding-block: 148px 0;
-    }
-  }
 
   &__text {
     @include row-end(flex-start);
@@ -626,8 +610,18 @@ figure {
   }
 
   &__small {
+    @include column-start;
     padding-block-end: 2.5ch;
     text-wrap: balance;
+
+    @include mq-max("md") {
+      display: none;
+    }
+
+    &-title {
+      @include body-font-styles;
+      font-weight: 700;
+    }
   }
 }
 
@@ -756,6 +750,34 @@ figure {
 
     &-details {
       color: var(--hero-color--primary);
+    }
+  }
+}
+
+.team {
+  padding-block-start: 0;
+  // @include section-padding(thin);
+
+  .accordion-btn {
+    &__title {
+      align-items: center;
+      justify-content: flex-start;
+    }
+    &__title-name {
+      @include h3;
+      width: 32%;
+    }
+    &__title-icon {
+      display: none;
+    }
+
+    &__content-img {
+      display: none;
+
+      @include mq-max("md") {
+        display: block;
+        width: 250px;
+      }
     }
   }
 }
