@@ -27,8 +27,8 @@ cta_2_target: "_blank"
 {% set small_title = '' %}
 {% set cta_1_text = '' %}
 {% set cta_2_text = '' %}
-{% set paragraph_title = "Meet [%span.color-primary%]the team[%span%]" %}
-{% set paragraph_text = "We call ourselves Bamboo Event Solutions because we take pride in delivering event solutions that are flexible, versatile, and backed by the strength of the leading event technology, RainFocus. With decades of event experience, our dynamic team will help you deliver amazing outcomes." %}
+{% set paragraph_title = section_team.section_title %}
+{% set paragraph_text = section_team.section_description %}
 {% include './_includes/partials/paragraph.html' %}
 
 {% include "./_includes/partials/team.html" %}

@@ -13,29 +13,63 @@ logo_url: https://bambooeventsolutions.netlify.app/static/img/icons/admin-logo.s
 local_backend: true
 publish_mode: editorial_workflow
 collections:
-  - name: "blog"
-    label: "Blog"
-    folder: "src/posts"
-    preview_path: "posts/blog/{{filename}}/"
-    create: true
-    editor:
-      preview: false
-    fields:
-      - { label: "Title", name: "title", widget: "string" }
-      - { label: "Description", name: "description", widget: "string" }
-      - { label: "Author", name: "author", widget: "string" }
-      - { label: "Publish Date", name: "date", widget: "datetime" }
-      - { label: "Body", name: "body", widget: "markdown" }
-      - widget: select
-        label: "tags"
-        name: "tags"
-        multiple: true
-        create: true
-        options: ["Tags", "created", "from", "config.yml"]
-      - label: "Cover Image" # Only seems to work with .md collections
-        name: "image"
-        widget: "image"
-        required: false
+  - name: "page_about"
+    label: "Page - About"
+    files:
+      - name: "section_team"
+        label: "Section Team "
+        file: "src/_data/section_team.yaml"
+        preview_path: "/about#team"
+        editor:
+          preview: false
+        fields:
+          - name: "section_title"
+            label: "Section Title"
+            widget: "string"
+            required: true
+          - name: "section_description"
+            label: "Section Description"
+            widget: "string"
+            required: true
+          - name: "accordion_data"
+            label: "Accordion Items"
+            label_singular: "Item"
+            widget: "list"
+            fields:
+              - name: "title"
+                label: "Title"
+                widget: "string"
+                required: true
+              - name: "role"
+                label: "Role"
+                widget: "string"
+                required: true
+              - name: "content"
+                label: "Content"
+                widget: "text"
+                required: true
+              - name: "img"
+                label: "Image"
+                widget: "image"
+                required: true
+              - name: "social_media"
+                label: "Social Media Links"
+                label_singular: "Social Media Link"
+                widget: "list"
+                fields:
+                  - name: "title"
+                    label: "Title"
+                    widget: "string"
+                    required: true
+                  - name: "url"
+                    label: "URL"
+                    widget: "string"
+                    required: true
+                  - name: "src"
+                    label: "Icon Source"
+                    widget: "image"
+                    required: true
+      - name: "accordion"
   - name: "page_library"
     label: "Page - Library"
     description: >
