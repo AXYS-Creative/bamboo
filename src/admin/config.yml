@@ -32,8 +32,8 @@ collections:
             widget: "string"
             required: true
           - name: "accordion_data"
-            label: "Accordion Items"
-            label_singular: "Item"
+            label: "Team Members"
+            label_singular: "Team Member"
             widget: "list"
             fields:
               - name: "title"
@@ -69,7 +69,6 @@ collections:
                     label: "Icon Source"
                     widget: "image"
                     required: true
-      - name: "accordion"
   - name: "page_library"
     label: "Page - Library"
     description: >
