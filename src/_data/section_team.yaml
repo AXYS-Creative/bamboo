@@ -1,28 +1,36 @@
-section_title: "Meet [%span.color-primary%]the team[%span%]"
-section_description: "We call ourselves Bamboo Event Solutions because we take pride in delivering event solutions that are flexible, versatile, and backed by the strength of the leading event technology, RainFocus. With decades of event experience, our dynamic team will help you deliver amazing outcomes."
-
+section_title: Meet [%span.color-primary%]the team[%span%]
+section_description: We call ourselves Bamboo Event Solutions because we take
+  pride in delivering event solutions that are flexible, versatile, and backed
+  by the strength of the leading event technology, RainFocus. With decades of
+  event experience, our dynamic team will help you deliver amazing outcomes.
 accordion_data:
-  - title: "Dave Massey"
-    role: "CEO"
-    content: "Bio here"
-    img: /static/img/library/library-sample-1.webp
-    social_media:
-      - title: LinkedIn
-        url: https://www.linkedin.com
-        src: /static/img/icon-social-square-x.svg
-      - title: Instagram
-        url: https://www.instagram.com
-        src: /static/img/icon-social-square-instagram.svg
-  - title: "Brandon Rich"
-    role: "CCO"
-    content: "Bio here"
-    img: /static/img/library/library-sample-1.webp
-    social_media:
-      - title: LinkedIn
-        url: https://www.linkedin.com
-        src: /static/img/icon-social-square-x.svg
-      - title: Instagram
-        url: https://www.instagram.com
-        src: /static/img/icon-social-square-instagram.svg
+  - title: Dave Massey
+    role: CEO
+    content: >-
+      Dave worked in the events space for 10 years, starting with WingateWeb,
+      focused on event delivery and implementation for large enterprise clients.
+      He led a team of 70 with a focus on client satisfaction. He is passionate
+      about his work, and loves to see his clients succeed as they pull off
+      large-scale complex events. Dave led the software implementation team
+      until he left in 2015 to pursue a new opportunity as the VP of Sales for
+      Infuse Medical where he led the sales and account management team. 
 
+
+      Dave loves to spend time with his family and friends wakeboarding and teaching people how to wakeboard and wakesurf.
+    img: /static/img/team-portrait-dave.avif
+    social_media:
+      - title: LinkedIn
+        url: https://www.linkedin.com/in/dave-massey-2b05464/
+        src: /static/img/icon-social-square-linkedin.svg
+  - title: Brandon Rich
+    role: CCO
+    content: Bio here
+    img: /static/img/team-portrait-brandon.avif
+    social_media:
+      - title: LinkedIn
+        url: https://www.linkedin.com/in/brandon-rich-2212a41/
+        src: /static/img/icon-social-square-linkedin.svg
+      - title: Instagram
+        url: https://www.instagram.com
+        src: /static/img/icon-social-square-instagram.svg
 accordion_behavior_single: false
