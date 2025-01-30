@@ -64,7 +64,7 @@ body:has(.site-loader) .hero h1,
 body:has(.site-loader) .hero p,
 body:has(.site-loader) .hero div {
   opacity: 0;
-  transition: 1s ease 0.25s;
+  transition: opacity 1s ease 0.25s;
 }
 body:has(.site-loader) .hero p {
   transition-delay: 0.325s;
@@ -940,7 +940,7 @@ figure {
 }
 @media screen and (max-width: 768px) {
   .hero {
-    height: clamp(500px, 100vh, 950px);
+    height: clamp(500px, 100svh, 950px);
   }
 }
 .hero__text {
@@ -1413,7 +1413,7 @@ figure {
 }
 @media screen and (max-width: 768px) {
   .main-home .hero {
-    height: clamp(500px, 75vh, 950px);
+    height: clamp(500px, 80svh, 950px);
   }
 }
 

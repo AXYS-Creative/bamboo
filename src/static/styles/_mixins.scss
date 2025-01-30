@@ -263,7 +263,7 @@ $min-breakpoints: (
   }
 
   @include mq-max("md") {
-    height: clamp(500px, 100vh, 950px);
+    height: clamp(500px, 100svh, 950px);
   }
 }
 

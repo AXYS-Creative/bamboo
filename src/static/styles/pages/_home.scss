@@ -17,7 +17,7 @@
       }
 
       @include mq-max("md") {
-        height: clamp(500px, 75vh, 950px);
+        height: clamp(500px, 80svh, 950px);
       }
     }
   }
