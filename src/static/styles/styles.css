@@ -1235,6 +1235,11 @@ figure {
     border-radius: var(--radius-btn);
   }
 }
+@media screen and (max-width: 480px) {
+  .team .accordion-content__img {
+    width: 100%;
+  }
+}
 
 .classic-link {
   position: relative;

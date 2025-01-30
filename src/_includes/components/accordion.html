@@ -28,10 +28,10 @@
     </div>
     <div class="accordion-content" id="accordion-item-{{ loop.index }}">
       <div class="accordion-content__inner">
-        <p class="accordion-content__message">{{ accordion.content }}</p>
         {% if accordion.img %}
         <img class="accordion-content__img" src="{{ accordion.img }}" alt="" />
         {% endif %}
+        <p class="accordion-content__message">{{ accordion.content }}</p>
         <!-- prettier-ignore -->
         {% if accordion.social_media %}
           {% set social_data = accordion.social_media %}

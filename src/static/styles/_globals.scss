@@ -833,6 +833,10 @@ figure {
           margin-block-end: 24px;
           border-radius: var(--radius-btn);
         }
+
+        @include mq-max("sm") {
+          width: 100%;
+        }
       }
     }
   }
