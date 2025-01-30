@@ -8,7 +8,7 @@
   &::before {
     content: "";
     position: absolute;
-    bottom: 0;
+    bottom: 2px;
     left: 0;
     right: auto;
     width: 100%;
@@ -36,7 +36,7 @@
 }
 
 .fill-text {
-  @include fill-text();
+  @include fill-text;
 
   &--primary {
     -webkit-text-fill-color: rgba($sage, 0.5); // not scalable
@@ -44,15 +44,7 @@
 }
 
 .sr-only {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
-  border: 0;
+  @include sr-only;
 }
 
 // Media Query Utility, be mindful of flex vs block

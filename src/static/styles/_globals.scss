@@ -70,7 +70,9 @@ body {
 .main-content {
   @include ultra-wide(var(--background-color), 0); // bg-color controlled here
   position: relative;
-  margin-block-end: var(--footer-height); // For site-footer (behind content)
+  margin-block-end: calc(
+    var(--footer-height) - 24px
+  ); // For site-footer (behind content). The -24px helps close the gap
 }
 
 .site-header {
@@ -425,18 +427,20 @@ body {
     width: 100%;
     margin-block-start: var(--top-space);
 
-    @include mq-max("xxl") {
-      --top-space: 128px;
-    }
+    @media all {
+      @include mq-max("xxl") {
+        --top-space: 128px;
+      }
 
-    @include mq-max("lg") {
-      --top-space: var(--footer-gap);
-    }
+      @include mq-max("lg") {
+        --top-space: var(--footer-gap);
+      }
 
-    @include mq-max("sm") {
-      flex-direction: column-reverse;
-      align-items: flex-start;
-      gap: var(--footer-gap);
+      @include mq-max("sm") {
+        flex-direction: column-reverse;
+        align-items: flex-start;
+        gap: var(--footer-gap);
+      }
     }
 
     .copyright {
@@ -448,8 +452,12 @@ body {
     }
 
     .credits {
-      // Use sr-only utility to hide
+      // @include sr-only;
       margin-right: auto;
+
+      .classic-link {
+        font-size: inherit;
+      }
     }
   }
 }
@@ -548,6 +556,10 @@ span {
 small {
   font-family: $brand-font--body;
   font-size: 14px;
+
+  @include mq-max("lg") {
+    font-size: 12px;
+  }
 }
 
 img,
@@ -772,8 +784,30 @@ figure {
 
       &__title {
         @include h3;
-        width: 32%;
+        flex-shrink: 0;
+        white-space: nowrap;
+
+        @include mq-min("md") {
+          width: 40%;
+        }
       }
+
+      &__role,
+      &__join-year {
+        @include h6;
+        flex-shrink: 0;
+        color: var(--hero-color--primary);
+      }
+
+      &__role {
+        @include mq-min("md") {
+          margin-inline-end: auto;
+        }
+        @include mq-max("md") {
+          margin-inline-start: auto;
+        }
+      }
+
       &__icon {
         display: none;
       }
@@ -796,6 +830,8 @@ figure {
         @include mq-max("md") {
           display: block;
           width: 250px;
+          margin-block-end: 24px;
+          border-radius: var(--radius-btn);
         }
       }
     }

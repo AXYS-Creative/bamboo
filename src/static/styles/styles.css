@@ -80,7 +80,7 @@ body:has(.load-complete) .hero div {
 
 .main-content {
   position: relative;
-  margin-block-end: var(--footer-height);
+  margin-block-end: calc(var(--footer-height) - 24px);
 }
 .main-content::before {
   content: "";
@@ -560,6 +560,9 @@ body:has(.load-complete) .hero div {
 .site-footer .bottom-group .credits {
   margin-right: auto;
 }
+.site-footer .bottom-group .credits .classic-link {
+  font-size: inherit;
+}
 
 .site-loader {
   display: flex;
@@ -884,6 +887,11 @@ small {
   font-family: Avenir, Montserrat, Corbel, source-sans-pro, sans-serif;
   font-size: 14px;
 }
+@media screen and (max-width: 1024px) {
+  small {
+    font-size: 12px;
+  }
+}
 
 img,
 video {
@@ -1168,7 +1176,8 @@ figure {
   font-weight: 300;
   line-height: 112%;
   text-wrap: balance;
-  width: 32%;
+  flex-shrink: 0;
+  white-space: nowrap;
 }
 @media screen and (max-width: 1512px) {
   .team .accordion-label__title {
@@ -1178,6 +1187,32 @@ figure {
 @media screen and (max-width: 480px) {
   .team .accordion-label__title {
     font-size: 32px;
+  }
+}
+@media screen and (min-width: 769px) {
+  .team .accordion-label__title {
+    width: 40%;
+  }
+}
+.team .accordion-label__role, .team .accordion-label__join-year {
+  color: var(--font-color--primary);
+  font-family: var(--font-family--heading);
+  font-size: clamp(14px, 1.8vw, 20px);
+  font-weight: 300;
+  line-height: 112%;
+  text-wrap: balance;
+  font-weight: 400;
+  flex-shrink: 0;
+  color: var(--hero-color--primary);
+}
+@media screen and (min-width: 769px) {
+  .team .accordion-label__role {
+    margin-inline-end: auto;
+  }
+}
+@media screen and (max-width: 768px) {
+  .team .accordion-label__role {
+    margin-inline-start: auto;
   }
 }
 .team .accordion-label__icon {
@@ -1196,6 +1231,8 @@ figure {
   .team .accordion-content__img {
     display: block;
     width: 250px;
+    margin-block-end: 24px;
+    border-radius: var(--radius-btn);
   }
 }
 
@@ -1210,7 +1247,7 @@ figure {
 .classic-link::before {
   content: "";
   position: absolute;
-  bottom: 0;
+  bottom: 2px;
   left: 0;
   right: auto;
   width: 100%;

@@ -12,6 +12,12 @@
       {% if accordion.role %}
       <span class="accordion-label__role">{{ accordion.role }}</span>
       {% endif %}
+      <!-- prettier-ignore -->
+      {% if accordion.join_year %}
+      <span class="accordion-label__join-year">
+        Since {{ accordion.join_year }}
+      </span>
+      {% endif %}
       <span
         class="accordion-label__icon magnet magnet-strong"
         aria-hidden="true"

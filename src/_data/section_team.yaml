@@ -6,6 +6,7 @@ section_description: We call ourselves Bamboo Event Solutions because we take
 accordion_data:
   - title: Dave Massey
     role: CEO
+    join_year: 2024
     content: >-
       Dave worked in the events space for 10 years, starting with WingateWeb,
       focused on event delivery and implementation for large enterprise clients.
@@ -23,6 +24,7 @@ accordion_data:
         src: /static/img/icon-social-square-linkedin.svg
   - title: Brandon Rich
     role: CCO
+    join_year: 2024
     content: Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sit tempore optio dolorem, recusandae perspiciatis est mollitia provident? Provident magnam facilis voluptatibus, voluptates nobis ducimus.
     img: /static/img/team-portrait-brandon.avif
     social_media:
@@ -34,6 +36,7 @@ accordion_data:
         src: /static/img/icon-social-square-instagram.svg
   - title: John Doe
     role: CFO
+    join_year: 2025
     content: Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sit tempore optio dolorem, recusandae perspiciatis est mollitia provident? Provident magnam facilis voluptatibus, voluptates nobis ducimus.
     img: /static/img/team-portrait-brandon.avif
     social_media:
