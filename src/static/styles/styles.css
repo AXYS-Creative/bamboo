@@ -1151,11 +1151,17 @@ figure {
 .team {
   padding-block-start: 0;
 }
-.team .accordion-btn__title {
+.team .accordion {
+  width: var(--thin-section-width);
+}
+.team .accordion-btn:first-of-type {
+  border-top: none;
+}
+.team .accordion-label {
   align-items: center;
   justify-content: flex-start;
 }
-.team .accordion-btn__title-name {
+.team .accordion-label__title {
   color: var(--font-color--primary);
   font-family: var(--font-family--heading);
   font-size: 52px;
@@ -1165,23 +1171,29 @@ figure {
   width: 32%;
 }
 @media screen and (max-width: 1512px) {
-  .team .accordion-btn__title-name {
+  .team .accordion-label__title {
     font-size: max(36px, 3.2vw);
   }
 }
 @media screen and (max-width: 480px) {
-  .team .accordion-btn__title-name {
+  .team .accordion-label__title {
     font-size: 32px;
   }
 }
-.team .accordion-btn__title-icon {
+.team .accordion-label__icon {
   display: none;
 }
-.team .accordion-btn__content-img {
+.team .accordion-content:has(.social-media-link:hover) .accordion-content__inner {
+  overflow: visible;
+}
+.team .accordion-content__message {
+  margin-block-end: 24px;
+}
+.team .accordion-content__img {
   display: none;
 }
 @media screen and (max-width: 768px) {
-  .team .accordion-btn__content-img {
+  .team .accordion-content__img {
     display: block;
     width: 250px;
   }
@@ -1397,16 +1409,22 @@ figure {
   display: flex;
   flex-direction: column;
 }
+.accordion:has(.accordion-btn:hover) .accordion-label__title, .accordion:has(.accordion-btn:focus-visible) .accordion-label__title {
+  background-size: 0%;
+}
 .accordion-btn {
   border-bottom: var(--border-bold-girth) solid var(--border-bold-color);
   text-align: left;
   padding-block: 24px;
 }
-.accordion-btn:hover .accordion-btn__title-icon, .accordion-btn:focus-visible .accordion-btn__title-icon {
+.accordion-btn:hover .accordion-label__title, .accordion-btn:focus-visible .accordion-label__title {
+  background-size: 100% !important;
+}
+.accordion-btn:hover .accordion-label__icon, .accordion-btn:focus-visible .accordion-label__icon {
   rotate: 0deg;
 }
 @media (prefers-reduced-motion: no-preference) {
-  .accordion-btn:hover .accordion-btn__title-icon, .accordion-btn:focus-visible .accordion-btn__title-icon {
+  .accordion-btn:hover .accordion-label__icon, .accordion-btn:focus-visible .accordion-label__icon {
     transition: translate 0.5s cubic-bezier(0.09, 0.9, 0.5, 1), 0.4s cubic-bezier(0.18, 0.97, 0.47, 1), rotate 0.24s ease;
     animation: pulse 0.24s ease;
   }
@@ -1414,7 +1432,23 @@ figure {
 .accordion-btn:first-of-type {
   border-top: var(--border-bold-girth) solid var(--border-bold-color);
 }
-.accordion-btn__title {
+.accordion-btn[aria-expanded=true] .accordion-label {
+  margin-bottom: 16px;
+}
+.accordion-btn[aria-expanded=true] .accordion-content {
+  grid-template-rows: 1fr;
+  visibility: visible;
+}
+.accordion-btn[aria-expanded=true] .accordion-label__title {
+  background-size: 100% !important;
+}
+.accordion-btn[aria-expanded=true] .accordion-label__icon {
+  rotate: 0deg;
+}
+.accordion-btn[aria-expanded=true] .accordion-label__icon .line:last-of-type {
+  rotate: 180deg;
+}
+.accordion-label {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
@@ -1428,22 +1462,30 @@ figure {
   transition: 0.64s cubic-bezier(0.18, 0.97, 0.47, 1);
 }
 @media screen and (max-width: 1512px) {
-  .accordion-btn__title {
+  .accordion-label {
     font-size: max(18px, 1.6vw);
   }
 }
 @media screen and (max-width: 480px) {
-  .accordion-btn__title {
+  .accordion-label {
     gap: 12px;
   }
 }
-.accordion-btn__title span {
+.accordion-label__title {
   font-family: inherit;
   font-size: inherit;
   font-weight: inherit;
+  display: inline;
+  background-repeat: no-repeat;
+  background-clip: text;
+  -webkit-background-clip: text;
+  background-image: linear-gradient(currentColor, currentColor);
+  -webkit-text-fill-color: rgba(0, 0, 0, 0.5);
   cursor: pointer;
+  background-size: 100%;
+  transition: 0.24s ease;
 }
-.accordion-btn__title-icon {
+.accordion-label__icon {
   --icon-size: 28px;
   position: relative;
   background-color: var(--hero-color--primary);
@@ -1453,9 +1495,9 @@ figure {
   display: inline-flex;
   flex-shrink: 0;
   rotate: -90deg;
-  transition: translate 0.5s cubic-bezier(0.09, 0.9, 0.5, 1), 0.24s ease, rotate 0s;
+  transition: 0.24s ease, translate 0.5s cubic-bezier(0.09, 0.9, 0.5, 1), rotate 0s;
 }
-.accordion-btn__title-icon .line {
+.accordion-label__icon .line {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -1465,14 +1507,14 @@ figure {
   background: var(--background-color);
 }
 @media (prefers-reduced-motion: no-preference) {
-  .accordion-btn__title-icon .line {
+  .accordion-label__icon .line {
     transition: 0.24s ease;
   }
 }
-.accordion-btn__title-icon .line:last-of-type {
+.accordion-label__icon .line:last-of-type {
   rotate: 90deg;
 }
-.accordion-btn__content {
+.accordion-content {
   --font-size: 18px;
   color: var(--font-color--primary);
   font-family: Avenir, Montserrat, Corbel, source-sans-pro, sans-serif;
@@ -1484,30 +1526,17 @@ figure {
   transition: 0.64s cubic-bezier(0.18, 0.97, 0.47, 1);
 }
 @media screen and (max-width: 1512px) {
-  .accordion-btn__content {
+  .accordion-content {
     --font-size: 16px;
   }
 }
 @media screen and (max-width: 768px) {
-  .accordion-btn__content {
+  .accordion-content {
     --font-size: 14px;
   }
 }
-.accordion-btn__content-inner {
+.accordion-content__inner {
   overflow: hidden;
-}
-.accordion-btn[aria-expanded=true] .accordion-btn__title {
-  margin-bottom: 16px;
-}
-.accordion-btn[aria-expanded=true] .accordion-btn__content {
-  grid-template-rows: 1fr;
-  visibility: visible;
-}
-.accordion-btn[aria-expanded=true] .accordion-btn__title-icon {
-  rotate: 0deg;
-}
-.accordion-btn[aria-expanded=true] .accordion-btn__title-icon .line:last-of-type {
-  rotate: 180deg;
 }
 
 .cta-1 {
@@ -1530,7 +1559,7 @@ figure {
   .cta-1:hover, .cta-1:focus-visible {
     background: var(--hero-color--primary);
     color: var(--background-color);
-    border-color: currentColor;
+    border-color: var(--hero-color--primary);
   }
 }
 @media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {

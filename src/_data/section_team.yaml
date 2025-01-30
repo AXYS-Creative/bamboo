@@ -14,8 +14,7 @@ accordion_data:
       large-scale complex events. Dave led the software implementation team
       until he left in 2015 to pursue a new opportunity as the VP of Sales for
       Infuse Medical where he led the sales and account management team. 
-
-
+      [%br%][%br%]
       Dave loves to spend time with his family and friends wakeboarding and teaching people how to wakeboard and wakesurf.
     img: /static/img/team-portrait-dave.avif
     social_media:
@@ -24,7 +23,18 @@ accordion_data:
         src: /static/img/icon-social-square-linkedin.svg
   - title: Brandon Rich
     role: CCO
-    content: Bio here
+    content: Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sit tempore optio dolorem, recusandae perspiciatis est mollitia provident? Provident magnam facilis voluptatibus, voluptates nobis ducimus.
+    img: /static/img/team-portrait-brandon.avif
+    social_media:
+      - title: LinkedIn
+        url: https://www.linkedin.com/in/brandon-rich-2212a41/
+        src: /static/img/icon-social-square-linkedin.svg
+      - title: Instagram
+        url: https://www.instagram.com
+        src: /static/img/icon-social-square-instagram.svg
+  - title: John Doe
+    role: CFO
+    content: Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sit tempore optio dolorem, recusandae perspiciatis est mollitia provident? Provident magnam facilis voluptatibus, voluptates nobis ducimus.
     img: /static/img/team-portrait-brandon.avif
     social_media:
       - title: LinkedIn

@@ -2,6 +2,14 @@
   display: flex;
   flex-direction: column;
 
+  // :hover,:focus-within still applied after mouseleave when interacted with
+  &:has(.accordion-btn:hover),
+  &:has(.accordion-btn:focus-visible) {
+    .accordion-label__title {
+      background-size: 0%;
+    }
+  }
+
   &-btn {
     $border: var(--border-bold-girth) solid var(--border-bold-color);
 
@@ -12,7 +20,10 @@
     // Don't use desktop-hover here
     &:hover,
     &:focus-visible {
-      .accordion-btn__title-icon {
+      .accordion-label__title {
+        background-size: 100% !important;
+      }
+      .accordion-label__icon {
         rotate: 0deg;
 
         @include mq-motion-allow {
@@ -26,80 +37,87 @@
       border-top: $border;
     }
 
-    &__title {
-      @include row-start(space-between);
-      @include h5;
-      gap: 24px;
-      transition: $ease-c;
-
-      @include mq-max("sm") {
-        gap: 12px;
-      }
-
-      span {
-        @include inherit-font;
-        cursor: pointer;
-      }
-
-      &-icon {
-        --icon-size: 28px;
-
-        position: relative;
-        background-color: var(--hero-color--primary);
-        width: var(--icon-size);
-        height: var(--icon-size);
-        border-radius: 50%;
-        display: inline-flex;
-        flex-shrink: 0;
-        rotate: -90deg;
-        transition: $magnet, $ease, rotate 0s;
-
-        .line {
-          @include absolute-center;
-          width: 50%;
-          height: 2px;
-          background: var(--background-color);
-
-          @include mq-motion-allow {
-            transition: $ease;
-          }
-
-          &:last-of-type {
-            rotate: 90deg;
-          }
-        }
-      }
-    }
-
-    &__content {
-      @include body-font-styles;
-      display: grid;
-      grid-template-rows: 0fr;
-      visibility: hidden;
-      transition: $ease-c;
-
-      &-inner {
-        overflow: hidden;
-      }
-    }
-
     &[aria-expanded="true"] {
-      .accordion-btn__title {
+      .accordion-label {
         margin-bottom: 16px;
       }
 
-      .accordion-btn__content {
+      .accordion-content {
         grid-template-rows: 1fr;
         visibility: visible;
       }
 
-      .accordion-btn__title-icon {
+      .accordion-label__title {
+        background-size: 100% !important;
+      }
+
+      .accordion-label__icon {
         rotate: 0deg;
 
         .line:last-of-type {
           rotate: 180deg;
         }
       }
+    }
+  }
+
+  &-label {
+    @include row-start(space-between);
+    @include h5;
+    gap: 24px;
+    transition: $ease-c;
+
+    @include mq-max("sm") {
+      gap: 12px;
+    }
+
+    &__title {
+      @include inherit-font;
+      @include fill-text(rgba(0, 0, 0, 0.5));
+      cursor: pointer;
+      background-size: 100%;
+      transition: $ease;
+    }
+
+    &__icon {
+      --icon-size: 28px;
+
+      position: relative;
+      background-color: var(--hero-color--primary);
+      width: var(--icon-size);
+      height: var(--icon-size);
+      border-radius: 50%;
+      display: inline-flex;
+      flex-shrink: 0;
+      rotate: -90deg;
+      transition: $ease, $magnet, rotate 0s;
+
+      .line {
+        @include absolute-center;
+        width: 50%;
+        height: 2px;
+        background: var(--background-color);
+
+        @include mq-motion-allow {
+          transition: $ease;
+        }
+
+        &:last-of-type {
+          rotate: 90deg;
+        }
+      }
+    }
+  }
+
+  &-content {
+    @include body-font-styles;
+    display: grid;
+    grid-template-rows: 0fr;
+    visibility: hidden;
+    transition: $ease-c;
+
+    &__inner {
+      overflow: hidden;
     }
   }
 }

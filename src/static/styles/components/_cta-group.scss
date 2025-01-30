@@ -14,7 +14,7 @@
   @include desktop-hover {
     background: var(--hero-color--primary);
     color: var(--background-color);
-    border-color: currentColor;
+    border-color: var(--hero-color--primary);
 
     @include mq-motion-allow {
       animation: pulse-sm $ease;

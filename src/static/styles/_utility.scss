@@ -36,12 +36,7 @@
 }
 
 .fill-text {
-  display: inline; // for fill line-wrap
-  background-repeat: no-repeat;
-  background-clip: text;
-  -webkit-background-clip: text;
-  background-image: linear-gradient(currentColor, currentColor);
-  -webkit-text-fill-color: rgba(0, 0, 0, 0.25);
+  @include fill-text();
 
   &--primary {
     -webkit-text-fill-color: rgba($sage, 0.5); // not scalable

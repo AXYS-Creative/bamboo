@@ -756,27 +756,47 @@ figure {
 
 .team {
   padding-block-start: 0;
-  // @include section-padding(thin);
 
-  .accordion-btn {
-    &__title {
+  .accordion {
+    width: var(--thin-section-width);
+
+    &-btn {
+      &:first-of-type {
+        border-top: none;
+      }
+    }
+
+    &-label {
       align-items: center;
       justify-content: flex-start;
-    }
-    &__title-name {
-      @include h3;
-      width: 32%;
-    }
-    &__title-icon {
-      display: none;
+
+      &__title {
+        @include h3;
+        width: 32%;
+      }
+      &__icon {
+        display: none;
+      }
     }
 
-    &__content-img {
-      display: none;
+    &-content {
+      &:has(.social-media-link:hover) {
+        .accordion-content__inner {
+          overflow: visible;
+        }
+      }
 
-      @include mq-max("md") {
-        display: block;
-        width: 250px;
+      &__message {
+        margin-block-end: 24px;
+      }
+
+      &__img {
+        display: none;
+
+        @include mq-max("md") {
+          display: block;
+          width: 250px;
+        }
       }
     }
   }
