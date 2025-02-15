@@ -21,7 +21,7 @@ cta_2_target: "_blank"
 {% set hero_title = "We deliver event solutions that are [%span.color-primary%]flexible & versatile[%span%]" %}
 {% set hero_subtitle = "The perfect balance of flexibility, strength, and limitless potential." %}
 {% set hero_subtitle_def = "Bamboo" %}
-{% include "./_includes/partials/hero.html" %}
+{% include "./_includes/partials/hero.njk" %}
 
 <!-- prettier-ignore -->
 {% set small_title = '' %}
@@ -29,15 +29,15 @@ cta_2_target: "_blank"
 {% set cta_2_text = '' %}
 {% set paragraph_title = section_team.section_title %}
 {% set paragraph_text = section_team.section_description %}
-{% include './_includes/partials/paragraph.html' %}
+{% include './_includes/partials/paragraph.njk' %}
 
-{% include "./_includes/partials/team.html" %}
+{% include "./_includes/partials/team.njk" %}
 
 <!-- prettier-ignore -->
 {% set marquee_toggle = true %}
 {% set marquee_text = '• Organize the [%span.text-stroke%]most amazing[%span%] events that leave [%span.text-stroke%]lasting[%span%] impressions' %}
 {% set marquee_scrub = true %}
-{% include './_includes/components/marquee.html' %}
+{% include './_includes/components/marquee.njk' %}
 
 <!-- prettier-ignore -->
 {% set small_title = 'Our services' %}
@@ -45,7 +45,7 @@ cta_2_target: "_blank"
 {% set cta_2_text = 'Learn More' %}
 {% set cta_2_description = 'Learn more about the services we offer' %}
 {% set cta_2_url = '/about' %}
-{% include './_includes/partials/perk-list.html' %}
+{% include './_includes/partials/perk-list.njk' %}
 
 <!-- prettier-ignore -->
 {% set grid_flow_img_src = '/static/img/library/library-sample-3.webp' %}
@@ -54,9 +54,9 @@ cta_2_target: "_blank"
 {% set grid_flow_img_loading = 'lazy' %}
 {% set grid_flow_img_width = 1024 %}
 {% set grid_flow_img_height = 586 %}
-{% include './_includes/components/grid-flow-img.html' %}
+{% include './_includes/components/grid-flow-img.njk' %}
 
-{% include "./_includes/partials/faq.html" %}
+{% include "./_includes/partials/faq.njk" %}
 
 <!-- prettier-ignore -->
-{% include './_includes/partials/loader.html' %}
+{% include './_includes/partials/loader.njk' %}
