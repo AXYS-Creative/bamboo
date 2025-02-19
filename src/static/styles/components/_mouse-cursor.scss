@@ -43,8 +43,9 @@
 
     // accordion toggle
     &.expanded {
-      opacity: 0.125;
-      scale: 0.85;
+      scale: 0.75;
+      transform-origin: bottom right;
+      translate: 25% -50%;
     }
 
     &.hidden {

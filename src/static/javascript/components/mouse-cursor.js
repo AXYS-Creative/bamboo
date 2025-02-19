@@ -4,34 +4,44 @@ import { cubicBezier } from "../global/animations.js";
 const cursor = document.querySelector(".mouse-cursor");
 const hideMouse = document.querySelectorAll(".hide-mouse");
 const teamAccordions = document.querySelectorAll(".team .accordion-btn");
-const cursorImages = document.querySelectorAll(".mouse-cursor__img"); // Ensure images exist
+const cursorImages = document.querySelectorAll(".mouse-cursor__img");
 
 if (mqMouse.matches) {
-  let mouseX = 0,
-    mouseY = 0,
-    cursorX = 0,
-    cursorY = 0,
-    startX = 0,
-    startY = 0,
-    progress = 0,
-    lastMouseX = 0,
+  let mouseX = window.innerWidth / 2,
+    mouseY = window.innerHeight / 2,
+    cursorX = mouseX,
+    cursorY = mouseY,
+    lastMouseX = mouseX,
     deltaX = 0,
-    velocityX = 0;
+    velocityX = 0,
+    progress = 0,
+    startX = cursorX,
+    startY = cursorY;
 
   const easeFunction = cubicBezier(0.29, 1.01, 0.16, 1.09);
   const duration = isSafari() ? 0.05 : 0.03;
 
+  // Limit range of mouse-cursor
+  const lerp = (start, end, t) => start + (end - start) * t;
+
   const animateCursor = () => {
     if (progress < 1) {
       progress = Math.min(progress + duration, 1);
-
       const easeFactor = easeFunction(progress);
 
-      cursorX = startX + (mouseX - startX) * easeFactor;
-      cursorY = startY + (mouseY - startY) * easeFactor;
+      let mappedX = lerp(
+        window.innerWidth * 0.4, // Adjust range limits here
+        window.innerWidth * 0.65, // Adjust range limits here
+        mouseX / window.innerWidth
+      );
+
+      let mappedY = lerp(cursorY, mouseY, 0.8); // adjust for easing
+
+      cursorX = lerp(startX, mappedX, easeFactor);
+      cursorY = lerp(startY, mappedY, easeFactor);
 
       deltaX = mouseX - lastMouseX;
-      velocityX = deltaX * 0.5;
+      velocityX = deltaX * 0.5; // Adjust sensitivity
       const rotation = Math.max(-5, Math.min(5, -velocityX));
 
       cursor.style.translate = `calc(${cursorX}px - 50%) calc(${cursorY}px - 50%)`;
@@ -47,6 +57,7 @@ if (mqMouse.matches) {
 
   document.addEventListener("mousemove", (e) => {
     cursor.style.opacity = 1;
+
     startX = cursorX;
     startY = cursorY;
     mouseX = e.clientX;

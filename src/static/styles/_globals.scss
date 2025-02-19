@@ -773,10 +773,6 @@ figure {
     width: var(--thin-section-width);
 
     &-btn {
-      &:hover {
-        z-index: 20;
-      }
-
       &:first-of-type {
         border-top: none;
       }
@@ -804,10 +800,10 @@ figure {
       }
 
       &__role {
-        @include mq-min("md") {
+        @include mq-min("lg") {
           margin-inline-end: auto;
         }
-        @include mq-max("md") {
+        @include mq-max("lg") {
           margin-inline-start: auto;
         }
       }
@@ -826,6 +822,10 @@ figure {
 
       &__message {
         margin-block-end: 24px;
+
+        @include mq-min("md") {
+          width: 64%;
+        }
       }
 
       &__img {
