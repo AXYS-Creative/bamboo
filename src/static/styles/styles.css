@@ -1855,7 +1855,7 @@ figure {
   top: 50%;
   left: 50%;
   translate: -50% -50%;
-  width: clamp(200px, 12.5vw, 350px);
+  width: clamp(200px, 12.5vw, 280px);
   border-radius: var(--radius);
   transition: 0.24s ease;
 }

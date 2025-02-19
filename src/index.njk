@@ -46,12 +46,14 @@ cta_2_target: "_blank"
 {% include './_includes/partials/partners.njk' %}
 
 <!-- prettier-ignore -->
-{% set small_title = 'Our services' %}
+{% set section_title = partials_perks_list.section_title %}
+{% set section_description = partials_perks_list.section_description %}
+{% set list = partials_perks_list.list %}
 {% set cta_1_text = 'Book Consultation' %}
 {% set cta_2_text = 'Learn More' %}
 {% set cta_2_description = 'Learn more about the services we offer' %}
 {% set cta_2_url = '/about' %}
-{% include './_includes/partials/perk-list.njk' %}
+{% include './_includes/partials/details-list.njk' %}
 
 <!-- prettier-ignore -->
 {% set grid_flow_img_src = '/static/img/library/library-sample-2.webp' %}

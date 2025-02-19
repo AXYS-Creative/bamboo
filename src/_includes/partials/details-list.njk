@@ -1,19 +1,19 @@
 <section class="perk-list">
-  <h2 class="h6 small-title">{{ small_title }}</h2>
+  <h2 class="h6 small-title">{{ section_title }}</h2>
   <div class="perk-list__text">
     <p class="body-lg fill-text">
-      {{ partials_perk_list.perk_list_description }}
+      {{ section_description }}
     </p>
     <dl class="perk-list__list">
-      {% for perk in partials_perk_list.perk_list %}
+      {% for item in list %}
       <div class="perk-list__list-item gsap-animate">
         <dt class="perk-list__list-term h4 fill-text quick-fill">
-          {{ perk.title }}
+          {{ item.title }}
         </dt>
         <dd
           class="perk-list__list-details h5 fill-text quick-fill fill-text--primary"
         >
-          {{ perk.description }}
+          {{ item.description }}
         </dd>
       </div>
       {% endfor %}

@@ -25,7 +25,11 @@ accordion_data:
   - title: Brandon Rich
     role: CCO
     join_year: 2024
-    content: Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sit tempore optio dolorem, recusandae perspiciatis est mollitia provident? Provident magnam facilis voluptatibus, voluptates nobis ducimus.
+    content: >-
+      Brandon has worked in events for over 15 years. Some roles have involved Project Management, Solution Creation and Implementation, Architecture, and Services Leadership including the creation of client care and onsite delivery departments.  Most recently for RainFocus, Brandon focused on the product while optimizing integration capabilities and then product operations.
+      Recently leaving RainFocus to go back to his roots with customer consulting and implementation, Brandon is excited to be part of Bamboo Event Solutions, and as a RainFocus partner, bring expert services to you.
+      [%br%][%br%]
+      Brandon's latest new outdoor hobby is dirt biking and he loves being outdoors and spending time with his family.
     img: /static/img/team-portrait-brandon.avif
     social_media:
       - title: LinkedIn
@@ -46,4 +50,4 @@ accordion_data:
       - title: Instagram
         url: https://www.instagram.com
         src: /static/img/icon-social-square-instagram.svg
-accordion_behavior_single: false
+accordion_behavior_single: true

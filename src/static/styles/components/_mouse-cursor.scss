@@ -33,7 +33,7 @@
 
   &__img {
     @include absolute-center;
-    width: clamp(200px, 12.5vw, 350px);
+    width: clamp(200px, 12.5vw, 280px);
     border-radius: var(--radius);
     transition: $ease;
 
