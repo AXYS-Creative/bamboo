@@ -60,10 +60,29 @@ if (mqMouse.matches) {
       if (cursorImages[index]) {
         cursorImages[index].classList.remove("hidden");
       }
+
+      // Check if accordion is expanded
+      if (el.getAttribute("aria-expanded") === "true") {
+        cursorImages[index].classList.add("expanded");
+      } else {
+        cursorImages[index].classList.remove("expanded");
+      }
     });
 
     el.addEventListener("mouseleave", () => {
       cursorImages.forEach((img) => img.classList.add("hidden"));
+    });
+
+    // Listen for accordion toggle
+    el.addEventListener("click", () => {
+      const isExpanded = el.getAttribute("aria-expanded") === "true";
+
+      // Reset all images first
+      cursorImages.forEach((img) => img.classList.remove("expanded"));
+
+      if (isExpanded && cursorImages[index]) {
+        cursorImages[index].classList.add("expanded");
+      }
     });
   });
 

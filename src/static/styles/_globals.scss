@@ -773,6 +773,10 @@ figure {
     width: var(--thin-section-width);
 
     &-btn {
+      &:hover {
+        z-index: 20;
+      }
+
       &:first-of-type {
         border-top: none;
       }
@@ -835,7 +839,7 @@ figure {
         }
 
         @include mq-max("sm") {
-          width: 100%;
+          width: 64%;
         }
       }
     }

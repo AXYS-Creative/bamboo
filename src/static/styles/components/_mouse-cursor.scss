@@ -33,9 +33,19 @@
 
   &__img {
     @include absolute-center;
-    width: min(12vw, 320px);
+    width: clamp(200px, 12.5vw, 350px);
     border-radius: var(--radius);
     transition: $ease;
+
+    @include mq-max("md") {
+      display: none;
+    }
+
+    // accordion toggle
+    &.expanded {
+      opacity: 0.125;
+      scale: 0.85;
+    }
 
     &.hidden {
       opacity: 0;
