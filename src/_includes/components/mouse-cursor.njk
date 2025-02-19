@@ -1,0 +1,12 @@
+<div style="opacity: 0" class="mouse-cursor" aria-hidden="true">
+  <div class="mouse-cursor__shape"></div>
+  <div class="mouse-cursor__portraits">
+    {% for item in section_team.accordion_data %}
+    <img
+      class="mouse-cursor__img mouse-cursor__img-{{ loop.index }} hidden"
+      src="{{ item.img }}"
+      alt=""
+    />
+    {% endfor %}
+  </div>
+</div>

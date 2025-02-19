@@ -1,35 +1,71 @@
 import { mqMouse, mqMotionAllow } from "../utility.js";
 
 if (mqMouse.matches && mqMotionAllow.matches) {
-  const magnetEffect = () => {
-    document.querySelectorAll(".magnet").forEach((el) =>
-      el.addEventListener("mousemove", function (e) {
-        const pos = this.getBoundingClientRect();
-        const mx = e.clientX - pos.left - pos.width / 2;
-        const my = e.clientY - pos.top - pos.height / 2;
+  document.querySelectorAll(".magnet").forEach((el) => {
+    let targetX = 0,
+      targetY = 0,
+      currentX = 0,
+      currentY = 0,
+      ease = 0.2;
 
-        this.style.translate = `${mx * 0.48}px ${my * 0.48}px`;
+    let isAnimating = false;
 
-        if (this.classList.contains("magnet-weak")) {
-          this.style.translate = `${mx * 0.12}px ${my * 0.12}px`;
-        }
+    const stopThreshold = 0.01;
 
-        if (this.classList.contains("magnet-strong")) {
-          this.style.translate = `${mx * 0.96}px ${my * 0.96}px`;
-        }
+    const animateMagnet = () => {
+      if (!isAnimating) return;
 
-        if (this.classList.contains("magnet-wide-btn")) {
-          this.style.translate = `${mx * 0.48}px ${my * 0.96}px`;
-        }
-      })
-    );
+      currentX += (targetX - currentX) * ease;
+      currentY += (targetY - currentY) * ease;
 
-    document.querySelectorAll(".magnet").forEach((el) =>
-      el.addEventListener("mouseleave", function () {
-        this.style.translate = "0 0";
-      })
-    );
-  };
+      el.style.translate = `${currentX}px ${currentY}px`;
 
-  magnetEffect();
+      if (
+        Math.abs(targetX - currentX) < stopThreshold &&
+        Math.abs(targetY - currentY) < stopThreshold
+      ) {
+        isAnimating = false;
+        currentX = targetX;
+        currentY = targetY;
+        return;
+      }
+
+      requestAnimationFrame(animateMagnet);
+    };
+
+    const startAnimation = () => {
+      if (!isAnimating) {
+        isAnimating = true;
+        animateMagnet();
+      }
+    };
+
+    el.addEventListener("mousemove", (e) => {
+      const pos = el.getBoundingClientRect();
+      const mx = e.clientX - pos.left - pos.width / 2;
+      const my = e.clientY - pos.top - pos.height / 2;
+
+      if (el.classList.contains("magnet-weak")) {
+        targetX = mx * 0.12;
+        targetY = my * 0.12;
+      } else if (el.classList.contains("magnet-strong")) {
+        targetX = mx * 0.96;
+        targetY = my * 0.96;
+      } else if (el.classList.contains("magnet-wide-btn")) {
+        targetX = mx * 0.48;
+        targetY = my * 0.96;
+      } else {
+        targetX = mx * 0.48;
+        targetY = my * 0.48;
+      }
+
+      startAnimation();
+    });
+
+    el.addEventListener("mouseleave", () => {
+      targetX = 0;
+      targetY = 0;
+      startAnimation();
+    });
+  });
 }

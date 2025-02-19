@@ -1818,6 +1818,51 @@ figure {
   gap: 0.5ch;
 }
 
+.mouse-cursor {
+  position: fixed;
+  top: 0;
+  pointer-events: none;
+  translate: -50% -50%;
+  z-index: 5;
+  transition: opacity 0.3s ease 0.2s, rotate 0.2s;
+}
+@media (hover: none) and (pointer: coarse) {
+  .mouse-cursor {
+    display: none;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .mouse-cursor {
+    display: none;
+  }
+}
+.mouse-cursor__shape {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  transition: opacity 0.24s ease 0s, width 0.5s ease, height 0.5s ease;
+}
+.mouse-cursor__portraits {
+  position: relative;
+}
+.mouse-cursor__img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  translate: -50% -50%;
+  width: min(12vw, 320px);
+  border-radius: var(--radius);
+  transition: 0.24s ease;
+}
+.mouse-cursor__img.hidden {
+  opacity: 0;
+}
+.mouse-cursor.hidden .mouse-cursor__shape {
+  opacity: 0;
+  width: 148px;
+  height: 148px;
+}
+
 .social-media-links {
   display: flex;
   gap: 24px;

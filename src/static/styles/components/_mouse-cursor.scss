@@ -1,0 +1,52 @@
+.mouse-cursor {
+  $ease-opacity: opacity $ease 0s;
+  $ease-size: width 0.5s ease, height 0.5s ease;
+
+  position: fixed;
+  top: 0;
+  pointer-events: none;
+  translate: -50% -50%;
+  z-index: $z-index--mouse-cursor;
+  transition: opacity 0.3s ease 0.2s, rotate 0.2s; // Initial display
+  // Transition for movement controlled by js for browser compatibility (old safari issues)
+
+  @include mq-touch {
+    display: none;
+  }
+  @include mq-motion-reduce {
+    display: none;
+  }
+
+  &__shape {
+    $size: 24px;
+
+    // border: 1px solid var(--font-color--primary);
+    width: $size;
+    height: $size;
+    border-radius: 50%;
+    transition: $ease-opacity, $ease-size;
+  }
+
+  &__portraits {
+    position: relative;
+  }
+
+  &__img {
+    @include absolute-center;
+    width: min(12vw, 320px);
+    border-radius: var(--radius);
+    transition: $ease;
+
+    &.hidden {
+      opacity: 0;
+    }
+  }
+
+  &.hidden {
+    .mouse-cursor__shape {
+      opacity: 0;
+      width: 148px; // scale makes the border thick
+      height: 148px;
+    }
+  }
+}
