@@ -12,6 +12,7 @@
     <h1 class="hero__title" aria-label="{{ hero_title | removeTokens }}">
       <span aria-hidden="true">{{ hero_title }}</span>
     </h1>
+    {% if hero_subtitle %}
     <small class="hero__small">
       {% if hero_subtitle_def %}
       <span class="hero__small-title">{{ hero_subtitle_def }}</span>
@@ -20,6 +21,7 @@
       <!-- prettier-ignore -->
       {{ hero_subtitle }}
     </small>
+    {%endif%}
   </div>
 
   {% include "../components/cta-group.njk" %}

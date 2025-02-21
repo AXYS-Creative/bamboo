@@ -1,0 +1,26 @@
+---
+layout: app
+path: faq
+
+title: FAQ • Bamboo Event Solutions
+description: Bamboo Template, a light theme with a modern feel. Simple user experience.
+
+# master props for cta-group
+cta_1_text: Book Consultation
+cta_1_description: Book a free consultation with us
+cta_1_url: "#"
+cta_2_text: Learn More
+cta_2_description: Learn more about our platform
+cta_2_url: "#"
+cta_2_target: "_blank"
+---
+
+<!-- prettier-ignore -->
+{% set eyebrow_text = 'FAQ Bamboo Event Solutions' %}
+{% set eyebrow_icon = "" %}
+{% set hero_title = "Find answers to the most [%span.color-primary%]frequently asked questions[%span%]" %}
+{% set hero_subtitle = "" %}
+{% set hero_subtitle_def = "" %}
+{% include "./_includes/partials/hero.njk" %}
+
+{% include "./_includes/partials/faq.njk" %}
